@@ -6,6 +6,7 @@ use App\Repository\EnterpriseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EnterpriseRepository::class)]
 class Enterprise
@@ -16,16 +17,40 @@ class Enterprise
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner le nom de l\'entreprise.')]
+    #[Assert\Length(
+        min: 2, max: 25,
+        minMessage: 'Le nom  doit être de 2 caractères minimum.',
+        maxMessage: "Le nom  ne doit pas dépasser 25 caractères",
+    )]
     private ?string $Name = null;
 
-    #[ORM\Column]
+
+    #[ORM\Column(length:15)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner un numéro de téléphone de l\'entreprise.')]
+    #[Assert\Length(
+        min: 10, max: 10,
+        minMessage:'Le numéro de téléphone doit contenir 10 chiffres',
+    )]
+    #[Assert\Regex(pattern: '/^0[1-9]([-. ]?[0-9]{2}){4}$/', message: 'Le numéro de téléphone ne doit contenir que des chiffres, des espaces et le caractère +.')]
     private ?int $PhoneNumber = null;
 
+
     #[ORM\Column(length: 25)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner votre email.')]
+    #[Assert\Email(message: 'Veuillez renseigner un email valide.')]
     private ?string $Email = null;
 
+
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner le titre de la page.')]
+    #[Assert\Length(
+        min: 2, max: 50,
+        minMessage: "L\'adresse doit être de 2 caractères minimum.",
+        maxMessage: "L/'adresse  ne doit pas dépasser 50 caractères"
+    )]
     private ?string $Adress = null;
+    
 
     #[ORM\OneToMany(targetEntity: Opinion::class, mappedBy: 'enterprise')]
     private Collection $Opinion;

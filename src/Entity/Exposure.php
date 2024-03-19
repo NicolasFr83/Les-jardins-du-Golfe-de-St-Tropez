@@ -6,6 +6,8 @@ use App\Repository\ExposureRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ExposureRepository::class)]
 class Exposure
@@ -15,8 +17,16 @@ class Exposure
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 15)]
+    #[ORM\Column(type: 'string',length: 15)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner un lieu de plantation.')]
+    #[Assert\Length(
+        min: 3, max: 50,
+        minMessage: 'Le nom doit contenir 3 caractères minimum.',
+        maxMessage: "Le nom ne doit pas dépasser 50 caractères"
+    )]
+    #[Assert\Regex(pattern: '/^[a-zA-Z]+$/', message: 'La marque ne doit contenir que des lettres.')]
     private ?string $Name = null;
+    
 
     #[ORM\OneToMany(targetEntity: Topics::class, mappedBy: 'Exposure')]
     private Collection $topics;

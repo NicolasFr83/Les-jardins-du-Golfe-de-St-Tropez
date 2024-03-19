@@ -6,6 +6,8 @@ use App\Repository\WateringRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: WateringRepository::class)]
 class Watering
@@ -16,6 +18,12 @@ class Watering
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner le type d\'arrosage SVP.')]
+    #[Assert\Length(
+        min: 3, max: 15,
+        minMessage: 'Le champ doit être de 3 caractères minimum.',
+        maxMessage: "Le champ  ne doit pas dépasser 15 caractères"
+    )]
     private ?string $Name = null;
 
     #[ORM\OneToMany(targetEntity: Topics::class, mappedBy: 'Watering')]
@@ -43,9 +51,6 @@ class Watering
         return $this;
     }
 
-    /**
-     * @return Collection<int, Topics>
-     */
     public function getTopics(): Collection
     {
         return $this->topics;

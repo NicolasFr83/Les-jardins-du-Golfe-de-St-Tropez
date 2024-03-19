@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\OpeningRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: OpeningRepository::class)]
 class Opening
@@ -13,20 +15,51 @@ class Opening
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 10)]
+
+    #[ORM\Column(type: 'string', length: 10)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner un jour.')]
+    #[Assert\Length(
+        min: 5, max: 8,
+        minMessage: 'Le jour doit contenir 2 caractères minimum.',
+        maxMessage: "Le jour ne doit pas dépasser 8 caractères"
+    )]
     private ?string $OpeningDay = null;
 
-    #[ORM\Column]
+    #[ORM\Column(length:5)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner les heures d\'ouverture  du l\'entreprise.')]
+    #[Assert\Length(
+        min: 5, max: 5,
+        minMessage:'L\'heure d\'ouverture doit contenir 5 chiffres',
+    )]
     private ?int $OpeningHourMorning = null;
 
-    #[ORM\Column]
+
+    #[ORM\Column(length:5)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner l\'heure de fermeture.')]
+    #[Assert\Length(
+        min: 5, max: 5,
+        minMessage:'L\'heure de fermeture doit contenir 5 chiffres',
+    )]
     private ?int $ClosingHourMorning = null;
 
-    #[ORM\Column]
+
+    #[ORM\Column(length:5)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner les heures d\'ouverture  de l\'entreprise.')]
+    #[Assert\Length(
+        min: 5, max: 5,
+        minMessage:'L\'heure d\'ouverture doit contenir 5 chiffres',
+    )]
     private ?int $OpeningHourAfternoon = null;
 
-    #[ORM\Column]
+
+    #[ORM\Column(length:5)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner les heures de fermeture  du l\'entreprise.')]
+    #[Assert\Length(
+        min: 5, max: 5,
+        minMessage:'L\'heure de fermeture doit contenir 5 chiffres',
+    )]    
     private ?int $ClosingHourAfternoon = null;
+    
 
     #[ORM\ManyToOne(inversedBy: 'Opening')]
     private ?Enterprise $enterprise = null;
