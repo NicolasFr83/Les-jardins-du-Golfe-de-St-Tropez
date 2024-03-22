@@ -24,7 +24,7 @@ class Opinion
         maxMessage: "Le nom ne doit pas dépasser 50 caractères"
     )]
     #[Assert\Regex(pattern: '/^[a-zA-Z]+$/', message: 'Le nom ne doit contenir que des lettres.')]
-    private ?string $Name = null;
+    private ?string $name = null;
 
 
     #[ORM\Column(length: 255)]
@@ -34,7 +34,7 @@ class Opinion
         minMessage: 'Le message doit être de 10 caractères minimum.',
         maxMessage: "La message ne doit pas dépasser 255 caractères"
     )]
-    private ?string $Avis = null;
+    private ?string $avis = null;
 
 
     #[ORM\Column(length:1)]
@@ -49,7 +49,7 @@ class Opinion
         message: 'Veuillez renseigner une note entre 1 et 5'
     )]
     #[Assert\Regex(pattern: '/^[1-5]+$/', message: 'Le Score ne doit contenir que des chiffres.')]
-    private ?int $Score = null;
+    private ?int $score = null;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $createdAt = null;
@@ -74,36 +74,36 @@ class Opinion
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getAvis(): ?string
     {
-        return $this->Avis;
+        return $this->avis;
     }
 
-    public function setAvis(string $Avis): static
+    public function setAvis(string $avis): static
     {
-        $this->Avis = $Avis;
+        $this->avis = $avis;
 
         return $this;
     }
 
     public function getScore(): ?int
     {
-        return $this->Score;
+        return $this->score;
     }
 
-    public function setScore(int $Score): static
+    public function setScore(int $score): static
     {
-        $this->Score = $Score;
+        $this->score = $score;
 
         return $this;
     }

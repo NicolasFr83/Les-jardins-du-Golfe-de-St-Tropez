@@ -24,7 +24,7 @@ class Watering
         minMessage: 'Le champ doit être de 3 caractères minimum.',
         maxMessage: "Le champ  ne doit pas dépasser 15 caractères"
     )]
-    private ?string $Name = null;
+    private ?string $name = null;
 
     #[ORM\OneToMany(targetEntity: Topics::class, mappedBy: 'Watering')]
     private Collection $topics;
@@ -41,12 +41,12 @@ class Watering
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }

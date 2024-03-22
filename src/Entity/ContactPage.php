@@ -22,7 +22,6 @@ class ContactPage
         minMessage: 'Le titre  doit être de 2 caractères minimum.',
         maxMessage: "Le titre  ne doit pas dépasser 255 caractères"
     )]
-
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -32,7 +31,7 @@ class ContactPage
         minMessage: 'La description de la page doit être de 10 caractères minimum.',
         maxMessage: "La description de la page ne doit pas dépasser 1255 caractères"
     )]
-    private ?string $PresentationText = null;
+    private ?string $presentationText = null;
 
     public function getId(): ?int
     {
@@ -53,12 +52,12 @@ class ContactPage
 
     public function getPresentationText(): ?string
     {
-        return $this->PresentationText;
+        return $this->presentationText;
     }
 
-    public function setPresentationText(string $PresentationText): static
+    public function setPresentationText(string $presentationText): static
     {
-        $this->PresentationText = $PresentationText;
+        $this->presentationText = $presentationText;
 
         return $this;
     }

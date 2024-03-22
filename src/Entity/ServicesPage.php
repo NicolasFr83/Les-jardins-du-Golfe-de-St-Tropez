@@ -23,7 +23,7 @@ class ServicesPage
         minMessage: 'Le titre  doit être de 2 caractères minimum.',
         maxMessage: "Le titre  ne doit pas dépasser 255 caractères"
     )]
-    private ?string $Title = null;
+    private ?string $title = null;
 
 
     #[ORM\Column(type: Types::TEXT)]
@@ -33,7 +33,7 @@ class ServicesPage
         minMessage: 'Le champ doit être de 10 caractères minimum.',
         maxMessage: "La champ ne doit pas dépasser 1255 caractères"
     )]
-    private ?string $ServicesPresentation = null;
+    private ?string $servicesPresentation = null;
 
     
     public function getId(): ?int
@@ -43,24 +43,24 @@ class ServicesPage
 
     public function getTitle(): ?string
     {
-        return $this->Title;
+        return $this->title;
     }
 
-    public function setTitle(string $Title): static
+    public function setTitle(string $title): static
     {
-        $this->Title = $Title;
+        $this->title = $title;
 
         return $this;
     }
 
     public function getServicesPresentation(): ?string
     {
-        return $this->ServicesPresentation;
+        return $this->servicesPresentation;
     }
 
-    public function setServicesPresentation(string $ServicesPresentation): static
+    public function setServicesPresentation(string $servicesPresentation): static
     {
-        $this->ServicesPresentation = $ServicesPresentation;
+        $this->servicesPresentation = $servicesPresentation;
 
         return $this;
     }

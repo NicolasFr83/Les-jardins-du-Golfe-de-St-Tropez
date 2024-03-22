@@ -23,7 +23,7 @@ class HomePage
         maxMessage: "Le titre  ne doit pas dépasser 50 caractères"
     )]
 
-    private ?string $Title = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 1000)]
     #[Assert\NotBlank(message: 'Veuillez renseigner le champ de bienvenue.')]
@@ -32,7 +32,7 @@ class HomePage
         minMessage: 'Le champ doit être de 10 caractères minimum.',
         maxMessage: "La champ ne doit pas dépasser 1000 caractères"
     )]
-    private ?string $PresentationText = null;
+    private ?string $presentationText = null;
 
     public function getId(): ?int
     {
@@ -41,24 +41,24 @@ class HomePage
 
     public function getTitle(): ?string
     {
-        return $this->Title;
+        return $this->title;
     }
 
-    public function setTitle(string $Title): static
+    public function setTitle(string $title): static
     {
-        $this->Title = $Title;
+        $this->title = $title;
 
         return $this;
     }
 
     public function getPresentationText(): ?string
     {
-        return $this->PresentationText;
+        return $this->presentationText;
     }
 
-    public function setPresentationText(string $PresentationText): static
+    public function setPresentationText(string $presentationText): static
     {
-        $this->PresentationText = $PresentationText;
+        $this->presentationText = $presentationText;
 
         return $this;
     }

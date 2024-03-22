@@ -23,7 +23,7 @@ class Enterprise
         minMessage: 'Le nom  doit être de 2 caractères minimum.',
         maxMessage: "Le nom  ne doit pas dépasser 25 caractères",
     )]
-    private ?string $Name = null;
+    private ?string $name = null;
 
 
     #[ORM\Column(length:15)]
@@ -33,13 +33,13 @@ class Enterprise
         minMessage:'Le numéro de téléphone doit contenir 10 chiffres',
     )]
     #[Assert\Regex(pattern: '/^0[1-9]([-. ]?[0-9]{2}){4}$/', message: 'Le numéro de téléphone ne doit contenir que des chiffres, des espaces et le caractère +.')]
-    private ?int $PhoneNumber = null;
+    private ?string $phoneNumber = null;
 
 
     #[ORM\Column(length: 25)]
     #[Assert\NotBlank(message: 'Veuillez renseigner votre email.')]
     #[Assert\Email(message: 'Veuillez renseigner un email valide.')]
-    private ?string $Email = null;
+    private ?string $email = null;
 
 
     #[ORM\Column(length: 50)]
@@ -49,19 +49,19 @@ class Enterprise
         minMessage: "L\'adresse doit être de 2 caractères minimum.",
         maxMessage: "L/'adresse  ne doit pas dépasser 50 caractères"
     )]
-    private ?string $Adress = null;
+    private ?string $adress = null;
     
 
     #[ORM\OneToMany(targetEntity: Opinion::class, mappedBy: 'enterprise')]
-    private Collection $Opinion;
+    private Collection $opinion;
 
     #[ORM\OneToMany(targetEntity: Opening::class, mappedBy: 'enterprise')]
-    private Collection $Opening;
+    private Collection $opening;
 
     public function __construct()
     {
-        $this->Opinion = new ArrayCollection();
-        $this->Opening = new ArrayCollection();
+        $this->opinion = new ArrayCollection();
+        $this->opening = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,48 +71,48 @@ class Enterprise
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getPhoneNumber(): ?int
+    public function getPhoneNumber(): ?string
     {
-        return $this->PhoneNumber;
+        return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(int $PhoneNumber): static
+    public function setPhoneNumber(string $phoneNumber): static
     {
-        $this->PhoneNumber = $PhoneNumber;
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): static
+    public function setEmail(string $email): static
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
 
     public function getAdress(): ?string
     {
-        return $this->Adress;
+        return $this->adress;
     }
 
-    public function setAdress(string $Adress): static
+    public function setAdress(string $adress): static
     {
-        $this->Adress = $Adress;
+        $this->adress = $adress;
 
         return $this;
     }
@@ -122,13 +122,13 @@ class Enterprise
      */
     public function getOpinion(): Collection
     {
-        return $this->Opinion;
+        return $this->opinion;
     }
 
     public function addOpinion(Opinion $opinion): static
     {
-        if (!$this->Opinion->contains($opinion)) {
-            $this->Opinion->add($opinion);
+        if (!$this->opinion->contains($opinion)) {
+            $this->opinion->add($opinion);
             $opinion->setEnterprise($this);
         }
 
@@ -137,7 +137,7 @@ class Enterprise
 
     public function removeOpinion(Opinion $opinion): static
     {
-        if ($this->Opinion->removeElement($opinion)) {
+        if ($this->opinion->removeElement($opinion)) {
             // set the owning side to null (unless already changed)
             if ($opinion->getEnterprise() === $this) {
                 $opinion->setEnterprise(null);
@@ -152,13 +152,13 @@ class Enterprise
      */
     public function getOpening(): Collection
     {
-        return $this->Opening;
+        return $this->opening;
     }
 
     public function addOpening(Opening $opening): static
     {
-        if (!$this->Opening->contains($opening)) {
-            $this->Opening->add($opening);
+        if (!$this->opening->contains($opening)) {
+            $this->opening->add($opening);
             $opening->setEnterprise($this);
         }
 
@@ -167,7 +167,7 @@ class Enterprise
 
     public function removeOpening(Opening $opening): static
     {
-        if ($this->Opening->removeElement($opening)) {
+        if ($this->opening->removeElement($opening)) {
             // set the owning side to null (unless already changed)
             if ($opening->getEnterprise() === $this) {
                 $opening->setEnterprise(null);

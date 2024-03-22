@@ -23,7 +23,7 @@ class Opening
         minMessage: 'Le jour doit contenir 2 caractères minimum.',
         maxMessage: "Le jour ne doit pas dépasser 8 caractères"
     )]
-    private ?string $OpeningDay = null;
+    private ?string $openingDay = null;
 
     #[ORM\Column(length:5)]
     #[Assert\NotBlank(message: 'Veuillez renseigner les heures d\'ouverture  du l\'entreprise.')]
@@ -31,7 +31,7 @@ class Opening
         min: 5, max: 5,
         minMessage:'L\'heure d\'ouverture doit contenir 5 chiffres',
     )]
-    private ?int $OpeningHourMorning = null;
+    private ?int $openingHourMorning = null;
 
 
     #[ORM\Column(length:5)]
@@ -40,7 +40,7 @@ class Opening
         min: 5, max: 5,
         minMessage:'L\'heure de fermeture doit contenir 5 chiffres',
     )]
-    private ?int $ClosingHourMorning = null;
+    private ?int $closingHourMorning = null;
 
 
     #[ORM\Column(length:5)]
@@ -49,7 +49,7 @@ class Opening
         min: 5, max: 5,
         minMessage:'L\'heure d\'ouverture doit contenir 5 chiffres',
     )]
-    private ?int $OpeningHourAfternoon = null;
+    private ?int $openingHourAfternoon = null;
 
 
     #[ORM\Column(length:5)]
@@ -58,7 +58,7 @@ class Opening
         min: 5, max: 5,
         minMessage:'L\'heure de fermeture doit contenir 5 chiffres',
     )]    
-    private ?int $ClosingHourAfternoon = null;
+    private ?int $closingHourAfternoon = null;
     
 
     #[ORM\ManyToOne(inversedBy: 'Opening')]
@@ -71,60 +71,60 @@ class Opening
 
     public function getOpeningDay(): ?string
     {
-        return $this->OpeningDay;
+        return $this->openingDay;
     }
 
-    public function setOpeningDay(string $OpeningDay): static
+    public function setOpeningDay(string $openingDay): static
     {
-        $this->OpeningDay = $OpeningDay;
+        $this->openingDay = $openingDay;
 
         return $this;
     }
 
     public function getOpeningHourMorning(): ?int
     {
-        return $this->OpeningHourMorning;
+        return $this->openingHourMorning;
     }
 
-    public function setOpeningHourMorning(int $OpeningHourMorning): static
+    public function setOpeningHourMorning(int $openingHourMorning): static
     {
-        $this->OpeningHourMorning = $OpeningHourMorning;
+        $this->openingHourMorning = $openingHourMorning;
 
         return $this;
     }
 
     public function getClosingHourMorning(): ?int
     {
-        return $this->ClosingHourMorning;
+        return $this->closingHourMorning;
     }
 
-    public function setClosingHourMorning(int $ClosingHourMorning): static
+    public function setClosingHourMorning(int $closingHourMorning): static
     {
-        $this->ClosingHourMorning = $ClosingHourMorning;
+        $this->closingHourMorning = $closingHourMorning;
 
         return $this;
     }
 
     public function getOpeningHourAfternoon(): ?int
     {
-        return $this->OpeningHourAfternoon;
+        return $this->openingHourAfternoon;
     }
 
-    public function setOpeningHourAfternoon(int $OpeningHourAfternoon): static
+    public function setOpeningHourAfternoon(int $openingHourAfternoon): static
     {
-        $this->OpeningHourAfternoon = $OpeningHourAfternoon;
+        $this->openingHourAfternoon = $openingHourAfternoon;
 
         return $this;
     }
 
     public function getClosingHourAfternoon(): ?int
     {
-        return $this->ClosingHourAfternoon;
+        return $this->closingHourAfternoon;
     }
 
-    public function setClosingHourAfternoon(int $ClosingHourAfternoon): static
+    public function setClosingHourAfternoon(int $closingHourAfternoon): static
     {
-        $this->ClosingHourAfternoon = $ClosingHourAfternoon;
+        $this->closingHourAfternoon = $closingHourAfternoon;
 
         return $this;
     }

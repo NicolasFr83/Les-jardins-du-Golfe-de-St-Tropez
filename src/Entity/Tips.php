@@ -23,7 +23,7 @@ class Tips
         minMessage: 'La titre  doit être de 2 caractères minimum.',
         maxMessage: "La titre  ne doit pas dépasser 50 caractères"
     )]
-    private ?string $Name = null;
+    private ?string $name = null;
 
 
     #[ORM\Column(type: Types::TEXT)]
@@ -33,7 +33,7 @@ class Tips
         minMessage: 'La section doit être de 10 caractères minimum.',
         maxMessage: "La section doit pas dépasser 1255 caractères"
     )]
-    private ?string $Description = null;
+    private ?string $description = null;
 
 
     public function getId(): ?int
@@ -43,24 +43,24 @@ class Tips
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(string $Description): static
+    public function setDescription(string $description): static
     {
-        $this->Description = $Description;
+        $this->description = $description;
 
         return $this;
     }

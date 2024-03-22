@@ -26,7 +26,7 @@ class Topics
         minMessage: 'Le champ doit être de 3 caractères minimum.',
         maxMessage: "Le champ  ne doit pas dépasser 25 caractères"
     )]
-    private ?string $Name = null;
+    private ?string $name = null;
 
 
     #[ORM\Column(length: 30)]
@@ -36,7 +36,7 @@ class Topics
         minMessage: 'Le champ doit être de 3 caractères minimum.',
         maxMessage: "Le champ  ne doit pas dépasser 30 caractères"
     )]
-    private ?string $LatinName = null;
+    private ?string $latinName = null;
 
 
     #[ORM\Column(type: Types::TEXT)]
@@ -46,7 +46,7 @@ class Topics
         minMessage: 'La section doit être de 10 caractères minimum.',
         maxMessage: "La section doit pas dépasser 1255 caractères"
     )]
-    private ?string $Description = null;
+    private ?string $description = null;
 
     #[Vich\UploadableField(mapping: 'plants_images', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
@@ -57,19 +57,19 @@ class Topics
 
     #[ORM\ManyToOne(inversedBy: 'topics')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Watering $Watering = null;
+    private ?Watering $watering = null;
 
     #[ORM\ManyToOne(inversedBy: 'topics')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Exposition $Exposition = null;
+    private ?Exposition $exposition = null;
 
     #[ORM\ManyToOne(inversedBy: 'topics')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $Category = null;
+    private ?Category $category = null;
 
     #[ORM\ManyToOne(inversedBy: 'topics')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Exposure $Exposure = null;
+    private ?Exposure $exposure = null;
 
     public function getId(): ?int
     {
@@ -78,24 +78,24 @@ class Topics
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getLatinName(): ?string
     {
-        return $this->LatinName;
+        return $this->latinName;
     }
 
-    public function setLatinName(string $LatinName): static
+    public function setLatinName(string $latinName): static
     {
-        $this->LatinName = $LatinName;
+        $this->latinName = $latinName;
 
         return $this;
     }
@@ -128,60 +128,60 @@ class Topics
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(string $Description): static
+    public function setDescription(string $description): static
     {
-        $this->Description = $Description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function getWatering(): ?Watering
     {
-        return $this->Watering;
+        return $this->watering;
     }
 
-    public function setWatering(?Watering $Watering): static
+    public function setWatering(?Watering $watering): static
     {
-        $this->Watering = $Watering;
+        $this->watering = $watering;
 
         return $this;
     }
 
     public function getExposition(): ?Exposition
     {
-        return $this->Exposition;
+        return $this->exposition;
     }
 
-    public function setExposition(?Exposition $Exposition): static
+    public function setExposition(?Exposition $exposition): static
     {
-        $this->Exposition = $Exposition;
+        $this->exposition = $exposition;
 
         return $this;
     }
 
     public function getCategory(): ?Category
     {
-        return $this->Category;
+        return $this->category;
     }
 
-    public function setCategory(?Category $Category): static
+    public function setCategory(?Category $category): static
     {
-        $this->Category = $Category;
+        $this->category = $category;
 
         return $this;
     }
 
     public function getExposure(): ?Exposure
     {
-        return $this->Exposure;
+        return $this->exposure;
     }
 
-    public function setExposure(?Exposure $Exposure): static
+    public function setExposure(?Exposure $exposure): static
     {
-        $this->Exposure = $Exposure;
+        $this->exposure = $exposure;
 
         return $this;
     }

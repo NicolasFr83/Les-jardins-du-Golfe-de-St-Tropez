@@ -25,7 +25,7 @@ class Category
         maxMessage: "Le nom ne doit pas dépasser 50 caractères"
     )]
     #[Assert\Regex(pattern: '/^[a-zA-Z]+$/', message: 'L\'éspèce ne doit contenir que des lettres.')]
-    private ?string $Name = null;
+    private ?string $name = null;
 
     #[ORM\OneToMany(targetEntity: Topics::class, mappedBy: 'Category')]
     private Collection $topics;
@@ -42,12 +42,12 @@ class Category
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }

@@ -24,7 +24,7 @@ class FormContact
         maxMessage: "Le nom ne doit pas dépasser 15 caractères"
     )]
     #[Assert\Regex(pattern: '/^[a-zA-Z]+$/', message: 'Le nom ne doit contenir que des lettres.')]
-    private ?string $Name = null;
+    private ?string $name = null;
 
 
     #[ORM\Column(type: 'string', length: 25)]
@@ -34,13 +34,13 @@ class FormContact
         maxMessage: "Le prénom ne doit pas dépasser 25 caractères"
     )]
     #[Assert\Regex(pattern: '/^[a-zA-ZÀ-ÿ -]+$/', message: "Le prénom ne doit contenir que des lettres")]
-    private ?string $FirstName = null;
+    private ?string $firstName = null;
 
 
     #[ORM\Column(length: 25)]
     #[Assert\NotBlank(message: 'Veuillez renseigner votre email.')]
     #[Assert\Email(message: 'Veuillez renseigner un email valide.')]
-    private ?string $Email = null;
+    private ?string $email = null;
 
 
     #[ORM\Column(length: 15)]
@@ -51,7 +51,7 @@ class FormContact
         maxMessage: "Le numéro de téléphone ne doit pas dépasser 15 caractères"
     )]
     #[Assert\Regex(pattern: '/^0[1-9]([-. ]?[0-9]{2}){4}$/', message: 'Le numéro de téléphone ne doit contenir que des chiffres, des espaces et le caractère +.')]
-    private ?string $PhoneNumber = null;
+    private ?string $phoneNumber = null;
 
 
     #[ORM\Column(length: 50)]
@@ -61,7 +61,7 @@ class FormContact
         minMessage: 'Le sujet doit être de 5 caractères minimum.',
         maxMessage: "Le sujet  ne doit pas dépasser 50 caractères"
     )]
-    private ?string $Subject = null;
+    private ?string $subject = null;
 
 
     #[ORM\Column(type: Types::TEXT)]
@@ -71,7 +71,7 @@ class FormContact
         minMessage: 'Le message doit être de 10 caractères minimum.',
         maxMessage: "La message ne doit pas dépasser 1255 caractères"
     )]
-    private ?string $Message = null;
+    private ?string $message = null;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $createdAt = null;
@@ -89,72 +89,72 @@ class FormContact
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getFirstName(): ?string
     {
-        return $this->FirstName;
+        return $this->firstName;
     }
 
-    public function setFirstName(string $FirstName): static
+    public function setFirstName(string $firstName): static
     {
-        $this->FirstName = $FirstName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): static
+    public function setEmail(string $email): static
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
 
     public function getPhoneNumber(): ?string
     {
-        return $this->PhoneNumber;
+        return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $PhoneNumber): static
+    public function setPhoneNumber(string $phoneNumber): static
     {
-        $this->PhoneNumber = $PhoneNumber;
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
 
     public function getSubject(): ?string
     {
-        return $this->Subject;
+        return $this->subject;
     }
 
-    public function setSubject(string $Subject): static
+    public function setSubject(string $subject): static
     {
-        $this->Subject = $Subject;
+        $this->subject = $subject;
 
         return $this;
     }
 
     public function getMessage(): ?string
     {
-        return $this->Message;
+        return $this->message;
     }
 
-    public function setMessage(string $Message): static
+    public function setMessage(string $message): static
     {
-        $this->Message = $Message;
+        $this->message = $message;
 
         return $this;
     }

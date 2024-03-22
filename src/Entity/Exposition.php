@@ -25,7 +25,7 @@ class Exposition
         maxMessage: "Le nom ne doit pas dépasser 50 caractères"
     )]
     #[Assert\Regex(pattern: '/^[a-zA-Z]+$/', message: 'Le message ne doit contenir que des lettres.')]
-    private ?string $Name = null;
+    private ?string $name = null;
     
 
     #[ORM\OneToMany(targetEntity: Topics::class, mappedBy: 'Exposition')]
@@ -43,12 +43,12 @@ class Exposition
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
