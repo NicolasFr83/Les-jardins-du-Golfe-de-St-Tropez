@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ContactPage index{% endblock %}
+
+{% block body %}
+    <h1>ContactPage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>PresentationText</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact_page in contact_pages %}
+            <tr>
+                <td>{{ contact_page.id }}</td>
+                <td>{{ contact_page.title }}</td>
+                <td>{{ contact_page.presentationText }}</td>
+                <td>
+                    <a href="{{ path('app_contact_page_show', {'id': contact_page.id}) }}">show</a>
+                    <a href="{{ path('app_contact_page_edit', {'id': contact_page.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_contact_page_new') }}">Create new</a>
+{% endblock %}
