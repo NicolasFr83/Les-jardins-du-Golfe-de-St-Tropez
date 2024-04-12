@@ -1,37 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ServicesPage index{% endblock %}
+{% block title %}Nos services{% endblock %}
 
 {% block body %}
-    <h1>ServicesPage index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>ServicesPresentation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for services_page in services_pages %}
-            <tr>
-                <td>{{ services_page.id }}</td>
-                <td>{{ services_page.title }}</td>
-                <td>{{ services_page.servicesPresentation }}</td>
-                <td>
-                    <a href="{{ path('app_services_page_show', {'id': services_page.id}) }}">show</a>
-                    <a href="{{ path('app_services_page_edit', {'id': services_page.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+            <section class="services">
+                <img src="{{ asset('images/palmier.png')}}" alt="" class='services__icon'>
+                <h1 class="services">{{ services_page.title }}</h1>
+                <img src="{{ asset('images/palmier.png')}}" alt="" class='services__icon'>
+            </section>
+            <section>   
+                <h2 class="services__title">Voici Nos services entretien:</h2>
+                <div class="services__contain">
+                    <p class="services__text">{{ services_page.servicesPresentation }}</p>
+                </div>
+                <div class='contain'> 
+                    <img class='contain__images'src="{{ asset('images/photo-villa.jpg')}}" alt="photo de jardin">
+                    <img class='contain__images'src="{{ asset('images/photo-villa-2.jpg')}}" alt="photo de jardin">
+                    <img class='contain__images'src="{{ asset('images/garden-2040714_640.jpg')}}" alt="photo de jardin">
+                </div>
+            </section> 
+            <section>
+                <h2 class="services__title">Voici nos services création:</h2>
+                <div class="services__contain">
+                    <p class="services__text">{{ services_page.creationPresentationText }}</p>
+                </div>
+                <div class="contain">
+                    <img class="contain__images" src="{{ asset('images/construction-site-.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('images/construction-work-.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('images/people-.jpg')}}" alt="photo création">
+                </div>
+            </section>
+                <h2 class="services__title">Nos services spécialisés:</h2>
+                <div class="services__contain">
+                    <p class="services__text">{{ services_page.specialServicesText }}</p>
+                </div>
+                <div class="contain">
+                    <img class="contain__images" src="{{ asset('images/swimming-pool.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('images/pexels.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('images/wash-concrete.jpg')}}" alt="photo création">
+                </div>
+            </section>
+            <div>
+                <a class="buton" href="{{ path('app_services_page_edit', {'id': services_page.id}) }}">modifier</a>
+            </div>
+            {# {% else %} #}
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_services_page_new') }}">Create new</a>
+    <section class="openingSection">
+        {% include "opening/index.html.twig" %}
+    </section>
 {% endblock %}
+
+

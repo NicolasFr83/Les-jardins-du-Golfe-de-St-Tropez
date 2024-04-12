@@ -1,0 +1,90 @@
+@use '../abstracts/_all' as abstract
+
+
+.logo
+    width: 15rem    
+
+.main
+    +abstract.d-flex (row, center, baseline) 
+    text-align: center
+    +abstract.title(abstract.$title-2, abstract.$green)
+    margin-top: 2rem
+    text-decoration: underline
+    text-underline-offset: 0.5rem
+    text-decoration-color: #cfe202
+    +abstract.responsive("big-phone")
+        +abstract.title(abstract.$title-1, abstract.$green)
+        margin-top: 5rem
+
+
+    &__icon
+        display: none
+        @include abstract.spin(5s)
+        +abstract.responsive("big-phone")
+            display: block
+            margin: 3rem
+            height: 36px
+
+    &__text
+        text-align: center
+        +abstract.text(abstract.$text-3, abstract.$yellow)
+        margin-top: 3rem
+        margin-left: auto
+        margin-right: auto
+        max-width: 80%
+        +abstract.responsive("litle-tablet")
+            +abstract.text(abstract.$text-2, abstract.$yellow)
+
+
+    &__text-contain
+        margin-top: 6rem
+        background: abstract.$darkgreen
+        border-radius: 15px
+        box-shadow: 20px 20px 13px 0px
+        max-width: 90%
+        margin-right: auto
+        margin-left: auto
+        padding-top: 1px
+        padding-bottom: 1px
+
+
+.caroussel
+    margin-top: 3rem
+    +abstract.d-flex(column, center, center)
+
+    &__images
+        display: flex
+        justify-content: beetwen
+        width: 75%
+        +abstract.responsive("litle-tablet")
+            width: 100%
+
+
+    &__title
+        text-align: center
+        +abstract.title(abstract.$title-3, abstract.$green)
+        margin-top: 3rem
+        margin-bottom: 2rem
+        text-decoration: underline
+        text-underline-offset: 0.5rem
+        text-decoration-color: abstract.$yellow
+        +abstract.responsive("big-phone")
+            +abstract.title(abstract.$title-2, abstract.$green)
+
+
+    &__link
+        +abstract.title(abstract.$title-3, abstract.$yellow)
+        text-align: center
+        margin-top: 1rem
+        text-decoration: underline
+        text-underline-offset: 0.5rem
+        text-decoration-color: abstract.$green
+        text-transform: uppercase
+
+
+        &:hover
+            color: abstract.$green
+            text-decoration: underline
+            text-underline-offset: 0.5rem
+            transform: translateY(-0.5rem)
+            text-decoration-color: abstract.$yellow

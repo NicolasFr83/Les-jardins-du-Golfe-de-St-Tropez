@@ -1,37 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HomePage index{% endblock %}
+{% block title %}Les jardins du Golfe de St Tropez{% endblock %}
 
 {% block body %}
-    <h1>HomePage index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>PresentationText</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for home_page in home_pages %}
-            <tr>
-                <td>{{ home_page.id }}</td>
-                <td>{{ home_page.title }}</td>
-                <td>{{ home_page.presentationText }}</td>
-                <td>
-                    <a href="{{ path('app_home_page_show', {'id': home_page.id}) }}">show</a>
-                    <a href="{{ path('app_home_page_edit', {'id': home_page.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+        <section class="main">
+            <img src="{{ asset('images/palmier.png')}}" alt="" class='main__icon main'>
+            <h1 class="main">{{ home_page.title }}</h1>
+            <img src="{{ asset('images/palmier.png')}}" alt="" class='main__icon'>
+        </section>
+        <section class="main__text-contain">
+            <p class="main__text">{{ home_page.presentationText }}</p>
+        </section>
+        <section class="caroussel">
+            <h2 class="caroussel__title">Voici un échantillon de sujets que vous pouvez retrouver dans notre pépinière</h2>
+            <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner caroussel__images">
+                <div class="carousel-item active">
+                <img src="{{ asset('images/flowers/roses-44.jpg')}}" class="" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img src="{{ asset('images/trees/olive-tree.jpg')}}" class="" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img src="{{ asset('images/trees/palm-tree.jpg')}}" class="" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+            <a  class="caroussel__link" href="{{ path('app_topics_index')}}">Aller vers notre pépinière</a>
+        </section>
+		{# {% if is_granted('ROLE_ADMIN') %}		 #}
+			<div class="main">
+				<a class="buton" href="{{ path('app_home_page_edit', {'id': home_page.id }) }}">Modifier</a>
+			</div>
+		{# {% endif %} #}
         {% endfor %}
-        </tbody>
-    </table>
+	<section class="openingSection">
+        {% include "opening/index.html.twig" %}
+    </section>
 
-    <a href="{{ path('app_home_page_new') }}">Create new</a>
 {% endblock %}

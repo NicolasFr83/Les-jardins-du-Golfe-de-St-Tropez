@@ -1,11 +1,32 @@
 <header>
-    <nav>
-    <div>
-    <img src="{{ asset('style/images/Logo-enterprise.png')}}" alt="">
-    </div>
+    <nav class="navbar navbar-default navbar-expand-lg nav-bar-custom head">
+        <div class="container-fluid nav-bar-custom" >
+            <img src="{{ asset('images/Logo-enterprise.png')}} " alt="logo-entreprise" class="logo" >
+            <button class="m-inherit navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 
+                aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512" fill="#00DD00">
+                    <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 
+                    128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 
+                    32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32
+                    32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end nav-bar-custom" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link text-warning link-hover link-success fs-5" href="{{ path('app_home_page_index')}}">Accueil</a>
+                    <a class="nav-link text-warning link-hover link-success fs-5" href="{{ path('app_services_page_index')}}">Nos services</a>                        
+                    <a class="nav-link text-warning link-hover link-success fs-5" href="{{ path('app_contact_page_index')}}">Contactez nous</a>
+                    <a class="nav-link text-warning link-hover link-success fs-5" href="{{ path('app_topics_index')}}">Pépinière</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+				        <a href="{{path('app_admin')}}" class="nav-link text-warning link-hover link-success fs-5">Gestion</a>
+                    {% endif %}
+                    {% if app.user %}
+				        <a href="{{path('app_logout')}}" class="nav-link text-warning link-hover link-success fs-5">Se déconnecter</a>
+			        {% else %}
+				        <a href="{{path('app_login')}}" class="nav-link text-warning link-hover link-success fs-5">Se connecter</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </nav>
-
-
-
-
 </header>

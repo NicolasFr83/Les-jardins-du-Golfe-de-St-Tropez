@@ -1,0 +1,31 @@
+@use "../abstracts/_all" as abstract
+    
+    
+.openingSection
+    background-color: abstract.$blackgreen
+    padding-top: 1rem
+    +abstract.d-flex(row, center, center)
+    margin-top: 8rem
+
+    &__days
+        background-color: abstract.$darkgreen
+        color: abstract.$yellow
+        width: 70%
+        border-radius: 1rem
+        +abstract.d-flex(column, center, center)
+        +abstract.responsive('litle-tablet')
+            +abstract.d-flex(row, space-around, center)
+
+        
+    &__logo
+        max-width: 40%
+        margin: 3%
+        +abstract.responsive('litle-tablet')
+            max-width: 26%
+
+    &__open
+        +abstract.d-flex(column, center, center)
+
+    &__title
+        +abstract.text(abstract.$text-4, abstract.$yellow)
+        font-weight: bold

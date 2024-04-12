@@ -1,0 +1,24 @@
+@use '../abstracts/_font' as font
+
+
+$title-1: 3rem
+$title-2: 2rem
+$title-3: 1.5rem
+
+$text-1: 3rem
+$text-2: 2rem
+$text-3: 1.5rem
+$text-4: 1rem
+
+
+
+@mixin text($font-size, $color)
+    font-family: font.$font-text
+    font-size: $font-size
+    color: $color
+
+@mixin title($font-size, $color)
+    font-family: font.$font-title
+    font-size: $font-size
+    color: $color
+

@@ -1,43 +1,13 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Opening index{% endblock %}
-
-{% block body %}
-    <h1>Opening index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>OpeningDay</th>
-                <th>OpeningHourMorning</th>
-                <th>ClosingHourMorning</th>
-                <th>OpeningHourAfternoon</th>
-                <th>ClosingHourAfternoon</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for opening in openings %}
-            <tr>
-                <td>{{ opening.id }}</td>
-                <td>{{ opening.openingDay }}</td>
-                <td>{{ opening.openingHourMorning }}</td>
-                <td>{{ opening.closingHourMorning }}</td>
-                <td>{{ opening.openingHourAfternoon }}</td>
-                <td>{{ opening.closingHourAfternoon }}</td>
-                <td>
-                    <a href="{{ path('app_opening_show', {'id': opening.id}) }}">show</a>
-                    <a href="{{ path('app_opening_edit', {'id': opening.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_opening_new') }}">Create new</a>
-{% endblock %}
+<div class="openingSection__days">
+    <img src="{{ asset('images/Logo-enterprise.png')}}" alt="logo-entreprise" class="openingSection__logo" >
+    <div class="openingSection__open">
+        <a class="openingSection__title">Téléphone : 04 98 33 00 00</a>
+        <p class="openingSection__title">Ouverture : </p>
+        <ul>
+            {% for opening in opening %}
+                <li>{{ opening.openingDay }} : {{ openingHourMorning }} - {{ closingHourMorning }} {{ openingHourAfternoon }} - {{ closingHourAfternoon }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
