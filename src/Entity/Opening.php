@@ -19,7 +19,7 @@ class Opening
     #[ORM\Column(type: 'string', length: 10)]
     #[Assert\NotBlank(message: 'Veuillez renseigner un jour.')]
     #[Assert\Length(
-        min: 5, max: 8,
+        min: 5, max: 10,
         minMessage: 'Le jour doit contenir 2 caractères minimum.',
         maxMessage: "Le jour ne doit pas dépasser 8 caractères"
     )]
@@ -62,6 +62,7 @@ class Opening
     
 
     #[ORM\ManyToOne(inversedBy: 'Opening')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Enterprise $enterprise = null;
 
     public function getId(): ?int

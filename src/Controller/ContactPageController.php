@@ -10,17 +10,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Repository\OpeningRepository;
+
 
 #[Route('/contact/page')]
 class ContactPageController extends AbstractController
 {
     #[Route('/', name: 'app_contact_page_index', methods: ['GET'])]
-    public function index(ContactPageRepository $contactPageRepository): Response
+    public function index(ContactPageRepository $contactPageRepository, OpeningRepository $openingRepository): Response
     {
+        $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
+        $openingHourMorning = $openingHours->getOpeninghourmorning();
+        $closingHourMorning = $openingHours->getClosinghourmorning();
+        $openingHourAfternoon = $openingHours->getOpeninghourafternoon();
+        $closingHourAfternoon = $openingHours->getClosinghourafternoon();
+
         return $this->render('contact_page/index.html.twig', [
             'contact_pages' => $contactPageRepository->findAll(),
+            'opening' => $openingRepository->findAll(),
+            'openingHourMorning' => $openingHourMorning,
+            'closingHourMorning' => $closingHourMorning,
+            'openingHourAfternoon' => $openingHourAfternoon,
+            'closingHourAfternoon' => $closingHourAfternoon,
         ]);
     }
+
 
     #[Route('/new', name: 'app_contact_page_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

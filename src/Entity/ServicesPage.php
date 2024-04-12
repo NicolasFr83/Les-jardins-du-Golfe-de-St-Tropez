@@ -35,6 +35,26 @@ class ServicesPage
     )]
     private ?string $servicesPresentation = null;
 
+
+    #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner le champ des services création de l\'entreprise.')]
+    #[Assert\Length(
+        min: 10, max: 1255,
+        minMessage: 'Le champ doit être de 10 caractères minimum.',
+        maxMessage: "La champ ne doit pas dépasser 1255 caractères"
+    )]
+    private ?string $creationPresentationText = null;
+
+
+    #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner le champ des services spécialisés de l\'entreprise.')]
+    #[Assert\Length(
+        min: 10, max: 1255,
+        minMessage: 'Le champ doit être de 10 caractères minimum.',
+        maxMessage: "La champ ne doit pas dépasser 1255 caractères"
+    )]
+    private ?string $specialServicesText = null;
+
     
     public function getId(): ?int
     {
@@ -61,6 +81,30 @@ class ServicesPage
     public function setServicesPresentation(string $servicesPresentation): static
     {
         $this->servicesPresentation = $servicesPresentation;
+
+        return $this;
+    }
+
+    public function getCreationPresentationText(): ?string
+    {
+        return $this->creationPresentationText;
+    }
+
+    public function setCreationPresentationText(string $creationPresentationText): static
+    {
+        $this->creationPresentationText = $creationPresentationText;
+
+        return $this;
+    }
+
+    public function getSpecialServicesText(): ?string
+    {
+        return $this->specialServicesText;
+    }
+
+    public function setSpecialServicesText(string $specialServicesText): static
+    {
+        $this->specialServicesText = $specialServicesText;
 
         return $this;
     }

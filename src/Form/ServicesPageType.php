@@ -14,6 +14,8 @@ class ServicesPageType extends AbstractType
         $builder
             ->add('title')
             ->add('servicesPresentation')
+            ->add('creationPresentationText')
+            ->add('specialServicesText')
         ;
     }
 

@@ -21,7 +21,7 @@ class OpeningType extends AbstractType
             ->add('closingHourAfternoon')
             ->add('enterprise', EntityType::class, [
                 'class' => Enterprise::class,
-'choice_label' => 'id',
+                'choice_label' => 'id',
             ])
         ;
     }

@@ -10,15 +10,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Repository\OpeningRepository;
 
-#[Route('/home/page')]
+#[Route('/')]
 class HomePageController extends AbstractController
 {
     #[Route('/', name: 'app_home_page_index', methods: ['GET'])]
-    public function index(HomePageRepository $homePageRepository): Response
+    public function index(HomePageRepository $homePageRepository, OpeningRepository $openingRepository): Response
     {
+        $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
+        $openingHourMorning = $openingHours->getOpeninghourmorning();
+        $closingHourMorning = $openingHours->getClosinghourmorning();
+        $openingHourAfternoon = $openingHours->getOpeninghourafternoon();
+        $closingHourAfternoon = $openingHours->getClosinghourafternoon();
+
         return $this->render('home_page/index.html.twig', [
             'home_pages' => $homePageRepository->findAll(),
+            'opening' => $openingRepository->findAll(),
+            'openingHourMorning' => $openingHourMorning,
+            'closingHourMorning' => $closingHourMorning,
+            'openingHourAfternoon' => $openingHourAfternoon,
+            'closingHourAfternoon' => $closingHourAfternoon,
         ]);
     }
 

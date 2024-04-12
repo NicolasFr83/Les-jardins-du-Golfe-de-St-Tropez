@@ -10,18 +10,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Repository\OpeningRepository;
 
 #[Route('/services/page')]
 class ServicesPageController extends AbstractController
 {
     #[Route('/', name: 'app_services_page_index', methods: ['GET'])]
-    public function index(ServicesPageRepository $servicesPageRepository): Response
+    public function index(ServicesPageRepository $servicesPageRepository, OpeningRepository $openingRepository): Response
     {
+        $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
+        $openingHourMorning = $openingHours->getOpeninghourmorning();
+        $closingHourMorning = $openingHours->getClosinghourmorning();
+        $openingHourAfternoon = $openingHours->getOpeninghourafternoon();
+        $closingHourAfternoon = $openingHours->getClosinghourafternoon();
+
         return $this->render('services_page/index.html.twig', [
             'services_pages' => $servicesPageRepository->findAll(),
+            'opening' => $openingRepository->findAll(),
+            'openingHourMorning' => $openingHourMorning,
+            'closingHourMorning' => $closingHourMorning,
+            'openingHourAfternoon' => $openingHourAfternoon,
+            'closingHourAfternoon' => $closingHourAfternoon,
         ]);
     }
-
     #[Route('/new', name: 'app_services_page_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
