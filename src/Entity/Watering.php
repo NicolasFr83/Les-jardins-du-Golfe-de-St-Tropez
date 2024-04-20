@@ -17,12 +17,12 @@ class Watering
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 15)]
+    #[ORM\Column]
     #[Assert\NotBlank(message: 'Veuillez renseigner le type d\'arrosage SVP.')]
     #[Assert\Length(
-        min: 3, max: 15,
+        min: 3, max: 20,
         minMessage: 'Le champ doit être de 3 caractères minimum.',
-        maxMessage: "Le champ  ne doit pas dépasser 15 caractères"
+        maxMessage: "Le champ  ne doit pas dépasser 20 caractères"
     )]
     private ?string $name = null;
 
@@ -32,6 +32,11 @@ class Watering
     public function __construct()
     {
         $this->topics = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;    
     }
 
     public function getId(): ?int
