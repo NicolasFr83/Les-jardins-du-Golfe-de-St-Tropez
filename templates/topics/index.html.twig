@@ -1,41 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Topics index{% endblock %}
+{% block title %}Pépinière - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Topics index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>LatinName</th>
-                <th>Description</th>
-                <th>ImageName</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for topic in topics %}
-            <tr>
-                <td>{{ topic.id }}</td>
-                <td>{{ topic.name }}</td>
-                <td>{{ topic.latinName }}</td>
-                <td>{{ topic.description }}</td>
-                <td>{{ topic.imageName }}</td>
-                <td>
-                    <a href="{{ path('app_topics_show', {'id': topic.id}) }}">show</a>
-                    <a href="{{ path('app_topics_edit', {'id': topic.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{# Variable personnalisée qui permet de récupère tous les paramètres de notre url #}
+{% set queryParams = app.request.query.all %}
 
-    <a href="{{ path('app_topics_new') }}">Create new</a>
+	<section class="recipe-page flex-center">
+		<h1 class="recipe-page__title">La pépinière</h1>
+		<p class="recipe-page__description">Voici tous nos sujets.</p>
+	</section>
+
+	<section class='filters flex-center'>
+		<p id="js_filters_button" class='filters__title'>Filtrer les sujets</p>
+		<form id='filters_form' class='filters__form hide filters-flux'>
+			<div class='category-filters flex-center'>
+				<p class='category-filters__title'>Filtrer par catégorie</p>
+				<div class='category-filters__select-container flex-center'>
+					{% for category in categories %}
+					{# Permet de vérifier s'il y a une catégorie dans les paramètres de l'url, et si oui alors la case correspndante est cochée #}
+						{% if queryParams is not empty and queryParams.categories is defined %}
+							{% set checked = (category.id in queryParams.categories) ? 'checked' : '' %}
+						{% else %}
+							{% set checked = "" %}
+						{% endif %}
+						<div class='category-filters__select-container flex-center'>
+							<input type='checkbox' name='categories[]' value='{{category.id}}' id='category{{category.id}}' {{checked}} class='filters__checkbox'>
+							<label for='category{{category.id}}' class='filters__label'>{{category.name}}</label>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class='exposure-filters flex-center'>
+				<p class='exposure-filters__title'>Filtrer par lieu de plantation</p>
+				<div class='exposure-filters__select-container flex-center'>
+					{% for exposure in exposures %}
+						{% if queryParams is not empty and queryParams.exposures is defined %}
+							{% set checked = (exposure.id in queryParams.exposures) ? 'checked' : '' %}
+						{% else %}
+							{% set checked = "" %}
+						{% endif %}
+						<div class='category-filters__select-container flex-center'>
+							<input type='checkbox' name='exposures[]' value='{{exposure.id}}' id='exposure{{exposure.id}}' {{checked}} class='filters__checkbox'>
+							<label for='exposure{{exposure.id}}' class='filters__label'>{{exposure.name}}</label>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+            <input type="hidden" name='page' value='{{page}}'>
+		</form>
+	</section>
+	<section id='filtered_topics' class='filtered-topics'>
+		{% include 'topics/_topics.html.twig'%}
+	</section>
 {% endblock %}

@@ -1,0 +1,68 @@
+	<section class="topicss flux">
+		{% if is_granted('ROLE_ADMIN') %}
+			<div class='new-topic'>
+				<a href="{{ path('app_topics_new') }}" class='underline'>Ajouter un sujet</a>
+			</div>
+		{% endif %}
+		<ul class="topics__list flex-center">
+			{# {% if is_granted('IS_AUTHENTICATED_FULLY') %} #}
+				{% for topic in topics %}
+					<li class="card-topic topic-flux flex-center">
+						<div class='card-topic__composition flex-center'>
+							<img class="topic__image" src="{{ vich_uploader_asset(topic, 'imageFile') }}" alt={{topic.name}} width=100px height=100px>
+							<div class="topic__description flex-center">
+								<p class="topic__description--title">{{topic.name}}</p>
+								<p class="topic__description--details">{{topic.description}}</p>
+							</div>
+						</div>
+						<a href="{{ path('app_topics_show', {'id': topic.id})}}" class='link-to-show-topic underline'>Voir le sujet</a>
+						{% if is_granted('ROLE_ADMIN') %}
+							<div class='topic__modification flex-center'>
+								<a href="{{ path('app_topics_edit', {'id': topic.id}) }}" class='topic__modification--modifier underline'>Modifier</a>
+								<a href="{{ path('app_topics_delete', {'id': topic.id}) }}" class='topic__modification--delete underline'>Supprimer</a>
+							</div>
+						{% endif %}
+					</li>
+				{% endfor %}
+		</ul>
+	</section>
+
+{# Variables personnalisées #}
+
+{# Récupère tous les paramètres de notre url #}
+{% set queryParams = app.request.query.all %}
+
+{# Récupère les paramètres de notre url sauf le paramètre page #}
+{% set queryFilters = queryParams|filter((v, k) => k is not same as ('page') and k is not same as ('ajax'))|url_encode %}
+
+	<section class='paging'>
+		{# Permet de récupérer le nombre de pages total.
+		Le filtre twig round avec ceil permet de récupérer l'entier supérieur,
+		0 correspondant au nombre de chiffre après la virgule #}
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			{% set pages = ((totalForAlltopics / limit)|round(0, 'ceil')) %}
+		{% else %}
+			{% set pages = ((total / limit)|round(0, 'ceil')) %}
+		{% endif %}
+		<ul class='paging__list flex-center'>
+			<li class='paging__list--first-page'>
+				<a href="{{path('app_topics_index', {'page': 1}) }}&{{queryFilters}}">Première page</a>
+			</li>
+			<li class='{{ (page == 1) ? 'disabled' : ''}} paging__list--previous-page'>
+				<a href="{{ (page > 1) ? path('app_topics_index', {'page': page - 1}) : '' }}&{{queryFilters}}">Page précédente</a>
+			</li>
+			<div class='flex-center'>
+				{% for item in 1..pages %}
+					<li class='{{ (page == item) ? 'active' : ''}} paging__list--item paging-topics-flux'>
+						<a href="{{ path('app_topics_index', {'page': item}) }}&{{queryFilters}}">{{ item }}</a>
+					</li>
+				{% endfor %}
+			</div>
+			<li class='{{ (page == pages) ? 'disabled' : ''}} paging__list--next-page'>
+				<a href="{{ (page < pages) ? path('app_topics_index', {'page': page + 1}) : '' }}&{{queryFilters}}">Page suivante</a>
+			</li>
+			<li class='paging__list--last-page'>
+				<a href="{{path('app_topics_index', {'page': pages}) }}&{{queryFilters}}">Dernière page</a>
+			</li>
+		</ul>
+	</section>

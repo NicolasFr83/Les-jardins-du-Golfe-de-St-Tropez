@@ -4,21 +4,70 @@ namespace App\Controller;
 
 use App\Entity\Topics;
 use App\Form\TopicsType;
+use App\Repository\CategoryRepository;
+use App\Repository\ExposureRepository;
 use App\Repository\TopicsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[Route('/topics')]
 class TopicsController extends AbstractController
 {
-    #[Route('/', name: 'app_topics_index', methods: ['GET'])]
-    public function index(TopicsRepository $topicsRepository): Response
-    {
+    #[Route('/', name: 'app_topics_index', methods: ['GET', 'POST'])]
+    public function index(
+        TopicsRepository $topicsRepository,
+        CategoryRepository $categoryRepository,
+        ExposureRepository $exposureRepository,
+        Request $request
+    ): Response {
+
+        $page = (int)$request->query->get('page', 1);
+
+        $limit = 3;
+
+        $filtersCategories = $request->get('categories');
+
+        $filtersExposures = $request->get('exposures');
+
+        $topics = $topicsRepository->getPaginatedAllTopics($page, $limit, $filtersCategories, $filtersExposures);
+
+        $total = $topicsRepository->countAllTopics($filtersCategories, $filtersExposures);
+
+        $categories = $categoryRepository->findAll();
+        $exposures = $exposureRepository->findAll();
+
+        if ($request->get('ajax')) {
+            if (!$topics) {
+                return new JsonResponse([
+                    'content' => $this->renderView('topics/_no_topics_found.html.twig'),
+                ]);
+            } else {
+                return new JsonResponse([
+                    'content' => $this->renderView('topics/_topics.html.twig', [
+                        'topics' => $topics,
+                        'total' => $total,
+                        'limit' => $limit,
+                        'page' => $page,
+                        'categories' => $categories,
+                        'exposures' => $exposures,
+                    ]),
+                ]);
+            }
+
+            
+        }
+
         return $this->render('topics/index.html.twig', [
-            'topics' => $topicsRepository->findAll(),
+            'topics' => $topics,
+            'total' => $total,
+            'limit' => $limit,
+            'page' => $page,
+            'categories' => $categories,
+            'exposures' => $exposures,
         ]);
     }
 

@@ -5,7 +5,9 @@
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
+
 import './styles/sass/main.sass';
+import './js/script.js';
 
 const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
@@ -13,6 +15,4 @@ const $ = require('jquery');
 require('bootstrap');
 
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
-
-// import './js/script.js';
+// console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

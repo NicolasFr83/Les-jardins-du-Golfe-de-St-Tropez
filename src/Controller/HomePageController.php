@@ -54,7 +54,7 @@ class HomePageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_home_page_show', methods: ['GET'])]
+    #[Route('/homepage/{id}', name: 'app_home_page_show', methods: ['GET'])]
     public function show(HomePage $homePage): Response
     {
         return $this->render('home_page/show.html.twig', [

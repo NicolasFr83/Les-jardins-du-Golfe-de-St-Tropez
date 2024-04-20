@@ -45,4 +45,49 @@ class TopicsRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    // Méthode pour effectuer une pagination (sans bundle)
+    public function getPaginatedAlltopics(int $page, int $limit, $filtersCategories = null, $filtersExposures = null): array
+    {
+        $offset = (($page * $limit) - $limit);
+
+        $query = $this->createQueryBuilder('r');
+
+        if ($filtersCategories !== null) {
+            $query->andWhere('r.category IN (:filtersCategories)')
+                ->setParameter('filtersCategories', $filtersCategories);
+        }
+
+        if ($filtersExposures !== null) {
+            $query->innerJoin('r.exposure', 'd')
+                ->andWhere('d IN (:filtersExposures)')
+                ->setParameter('filtersExposures', $filtersExposures);
+        }
+
+        $query->orderBy('r.category', 'DESC')
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery();
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function countAlltopics($filtersCategories = null, $filtersExposures = null): int
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select('COUNT(r.id)');
+
+            if ($filtersCategories !== null) {
+                $query->andWhere('r.category IN (:filtersCategories)')
+                    ->setParameter('filtersCategories', $filtersCategories);
+            }
+
+            if ($filtersExposures !== null) {
+                $query->innerJoin('r.exposure', 'd')
+                    ->andWhere('d IN (:filtersExposures)')
+                    ->setParameter('filtersExposures', $filtersExposures);
+            }
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
 }
