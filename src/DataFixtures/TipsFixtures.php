@@ -15,7 +15,9 @@ class TipsFixtures extends Fixture
 
         $tips = new Tips();
         $tips->setName($faker->text(10))
-            ->setDescription($faker->text(50));
+            ->setPlanting($faker->text(50))
+            ->setMaintenance($faker->text(50))
+            ->setImageName('default.jpg');
 
             $manager->persist($tips);
 

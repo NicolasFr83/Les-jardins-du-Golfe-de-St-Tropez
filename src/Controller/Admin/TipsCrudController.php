@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextAreaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class TipsCrudController extends AbstractCrudController
 {
@@ -21,7 +23,7 @@ class TipsCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular('Astuce')
             ->setEntityLabelInPlural('Astuces')
-            ->setPageTitle('index', '%entity_label_singular%')
+            ->setPageTitle('index', '%entity_label_plural%')
             ->setPaginatorPageSize(10);
     }
 
@@ -30,8 +32,14 @@ class TipsCrudController extends AbstractCrudController
         return [
             IdField::new('id')
                 ->hideOnForm(),
-            TextField::new('name', 'Titre de la section astuce'),
-            TextAreaField::new('description', 'Description de la section astuce'),
+            TextField::new('name', 'Titre de l\'astuce'),
+            TextareaField::new('planting', 'Plantation'),
+            TextareaField::new('maintenance', 'Entretien'),
+            TextField::new('imageFile')
+                ->setFormType(VichImageType::class),
+            ImageField::new('imageName', 'Photo du sujet')
+                ->setBasePath('/uploads/plants')
+                ->onlyOnIndex(),
         ];
     }
 }
