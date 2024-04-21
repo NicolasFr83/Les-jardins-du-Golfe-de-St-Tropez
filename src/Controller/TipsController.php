@@ -17,9 +17,13 @@ class TipsController extends AbstractController
     #[Route('/', name: 'app_tips_index', methods: ['GET'])]
     public function index(TipsRepository $tipsRepository): Response
     {
-        return $this->render('tips/index.html.twig', [
-            'tips' => $tipsRepository->findAll(),
-        ]);
+        if ($this->isGranted('ROLE_USER')) {
+            return $this->render('tips/index.html.twig', [
+                'tips' => $tipsRepository->findAll(),
+            ]);
+        } else {
+            return $this->redirectToRoute('app_login');
+        }
     }
 
     #[Route('/new', name: 'app_tips_new', methods: ['GET', 'POST'])]

@@ -1,37 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tips index{% endblock %}
+{% block title %}Tutos - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Tips index</h1>
+    <h1>Nos tutos</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class='new-tip'>
+            <a href="{{ path('app_tips_new') }}" class='underline'>Ajouter un sujet</a>
+        </div>
+    {% endif %}
+
+    <ul class="tips__list flex-center">
         {% for tip in tips %}
-            <tr>
-                <td>{{ tip.id }}</td>
-                <td>{{ tip.name }}</td>
-                <td>{{ tip.description }}</td>
-                <td>
-                    <a href="{{ path('app_tips_show', {'id': tip.id}) }}">show</a>
-                    <a href="{{ path('app_tips_edit', {'id': tip.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+            <li class="card-tip tip-flux flex-center">
+                <div class='card-tip__composition flex-center'>
+                    <img class="tip__image
+                    " src="{{ vich_uploader_asset(tip, 'imageFile') }}" alt={{tip.name}} width=100px height=100px>
+                    <div class="tip__description flex-center">
+                        <p class="tip__description--title">{{tip.name}}</p>
+                        <p class="tip__description--details">{{tip.planting}}</p>
+                        <p class="tip__description--details">{{tip.maintenance}}</p>
+                    </div>
+                </div>
+                <a href="{{ path('app_tips_show', {'id': tip.id})}}" class='link-to-show-tip underline'>Voir le sujet</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class='tip__modification flex-center'>
+                        <a href="{{ path('app_tips_edit', {'id': tip.id}) }}" class='tip__modification--modifier underline'>Modifier</a>
+                        <a href="{{ path('app_tips_delete', {'id': tip.id}) }}" class='tip__modification--delete underline'>Supprimer</a>
+                    </div>
+                {% endif %}
+            </li>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_tips_new') }}">Create new</a>
+    </ul>
 {% endblock %}

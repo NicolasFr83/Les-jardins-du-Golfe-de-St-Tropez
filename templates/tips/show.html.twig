@@ -1,30 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tips{% endblock %}
+{% block title %}{{ tip.name }} - Les jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Tips</h1>
+    <main class='show-tip flex-center card-flux'>
+        <img class='show-tip__image' src="{{ vich_uploader_asset(tip, 'imageFile') }}" alt="{{ tip.name }}">
+        <h1 class='show-tip__title'>{{ tip.name }}</h1>
+        <p class='show-tip__planting'>{{ tip.planting }}</p>
+        <p class='show-tip__maintenance'>{{ tip.maintenance }}</p>
+    </main>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tip.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ tip.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ tip.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_tips_index') }}">back to list</a>
-
-    <a href="{{ path('app_tips_edit', {'id': tip.id}) }}">edit</a>
-
-    {{ include('tips/_delete_form.html.twig') }}
+    <div class='tip-link flex-center'>
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('tips/_delete_form.html.twig') }}
+        <a href="{{ path('app_tips_edit', {'id': tip.id}) }}">Modifier</a>
+    {% endif %}
+        <a class='show-tip-link__back-tips btn btn__linear-gradient' href="{{ path('app_tips_index') }}">Retourner à la liste des sujets</a>
+    </div>
 {% endblock %}
