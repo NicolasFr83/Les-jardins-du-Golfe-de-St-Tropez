@@ -32,7 +32,7 @@ class TipsType extends AbstractType
                 'row_attr' => [
                     'class' => 'tip-form__field'
                 ],
-                'label' => 'Message',
+                'label' => 'Plantation',
                 'label_attr' => [
                     'class' => 'tip-form__field--label'
                 ],
@@ -45,7 +45,7 @@ class TipsType extends AbstractType
                 'row_attr' => [
                     'class' => 'tip-form__field'
                 ],
-                'label' => 'Message',
+                'label' => 'Entretien',
                 'label_attr' => [
                     'class' => 'tip-form__field--label'
                 ],

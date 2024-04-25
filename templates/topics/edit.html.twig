@@ -8,7 +8,7 @@
             <h1 class="topic-form__title">Modification du sujet</h1>
             {{ include('topics/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
         </div>
-        <a class="topic-form__delete" href="{{ path('app_topics_index') }}">Retourner à la liste des sujets</a>
+        <a class="topic-form__link-back-topics" href="{{ path('app_topics_index') }}">Retourner à la liste des sujets</a>
         {{ include('topics/_delete_form.html.twig') }}
     </main>
 {% endblock %}

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ServicesPage{% endblock %}
+{% block title %}Modification page services - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Edit ServicesPage</h1>
-
-    {{ include('services_page/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_services_page_index') }}">back to list</a>
-
-    {{ include('services_page/_delete_form.html.twig') }}
+    <main class="services-page-form">
+        <div class="services-page-form__design">
+            <h1 class="services-page-form__title">Modification de la page services</h1>
+            {{ include('services_page/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+        </div>
+        <a class="services-page-form__link-back-services-page" href="{{ path('app_services_page_index') }}">Retourner à la page services</a>
+    </main>
 {% endblock %}

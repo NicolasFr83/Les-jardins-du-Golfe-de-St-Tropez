@@ -5,11 +5,11 @@ namespace App\Controller\Admin;
 use App\Entity\ContactPage;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextAreaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class ContactPageCrudController extends AbstractCrudController
 {
@@ -41,7 +41,7 @@ class ContactPageCrudController extends AbstractCrudController
             IdField::new('id')
                 ->hideOnForm(),
             TextField::new('title','Titre'),
-            TextAreaField::new('presentationText','Description'),
+            TextareaField::new('presentationText','Description'),
         ];
     }
 }

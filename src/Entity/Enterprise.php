@@ -19,7 +19,7 @@ class Enterprise
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message: 'Veuillez renseigner le nom de l\'entreprise.')]
     #[Assert\Length(
-        min: 2, max: 25,
+        min: 2, max: 50,
         minMessage: 'Le nom  doit être de 2 caractères minimum.',
         maxMessage: "Le nom  ne doit pas dépasser 25 caractères",
     )]
@@ -62,6 +62,11 @@ class Enterprise
     {
         $this->opinion = new ArrayCollection();
         $this->opening = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;    
     }
 
     public function getId(): ?int

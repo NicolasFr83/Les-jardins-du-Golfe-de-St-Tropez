@@ -1,6 +1,6 @@
 @use "../../abstracts/_all" as abstracts
 
-.tip-form
+.contact-page-form
     +abstracts.d-flex(column, center, center)
 
     &__design
@@ -78,33 +78,11 @@
                 box-shadow: 1px 1px 10px -1px green
                 cursor: pointer
 
-    &__delete
-        text-align: center
-        text-decoration: underline
-        text-underline-offset: 0.3rem
-        color: black
-        margin: 0.5vh
-        &:hover
-            color: yellow
-        +abstracts.responsive('litle-tablet')
-            margin-left: 0.5vw
-
-    &__link-back-tips
+    &__link-back-contact-page
+        margin-bottom: 10vh
         text-align: center
         text-decoration: underline
         text-underline-offset: 0.3rem
         color: green
-        margin-bottom: 10vh
         &:hover
             text-decoration-color: yellow
-
-#tips_imageFile_file
-    margin: 1rem
-    width: 100%
-
-#tips_imageFile_delete
-    margin-left: 0.5rem
-
-.vich-image a img
-    width: 100%
-    margin: 0.5rem 0 0.5rem 0

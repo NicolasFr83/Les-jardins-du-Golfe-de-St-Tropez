@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit HomePage{% endblock %}
+{% block title %}Modification page accueil - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Edit HomePage</h1>
-
-    {{ include('home_page/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_home_page_index') }}">back to list</a>
-
-    {{ include('home_page/_delete_form.html.twig') }}
+    <main class="home-page-form">
+        <div class="home-page-form__design">
+            <h1 class="home-page-form__title">Modification de la page d'accueil</h1>
+            {{ include('home_page/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+        </div>
+        <a class="home-page-form__link-back-home-page" href="{{ path('app_home_page_index') }}">Retourner à la page d'accueil</a>
+    </main>
 {% endblock %}

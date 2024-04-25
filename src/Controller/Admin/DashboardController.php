@@ -41,8 +41,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Page de contact', 'fa-regular fa-file', ContactPage::class)
             ->setPermission('ROLE_ADMIN');
-        yield MenuItem::linkToCrud('Page de la pépinière', 'fa-regular fa-file', Topics::class)
-            ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Page d\'accueil' , 'fa-regular fa-file', HomePage::class)
             ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Page de nos services', 'fa-regular fa-file', ServicesPage::class)

@@ -51,28 +51,6 @@ class ContactPageController extends AbstractController
         ]);
     }
 
-
-    #[Route('/new', name: 'app_contact_page_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $contactPage = new ContactPage();
-        $form = $this->createForm(ContactPageType::class, $contactPage);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($contactPage);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_contact_page_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('contact_page/new.html.twig', [
-            'contact_page' => $contactPage,
-            'form' => $form,
-        ]);
-    }
-
-
     #[Route('/{id}/edit', name: 'app_contact_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ContactPage $contactPage, EntityManagerInterface $entityManager): Response
     {
@@ -89,16 +67,5 @@ class ContactPageController extends AbstractController
             'contact_page' => $contactPage,
             'form' => $form,
         ]);
-    }
-
-    #[Route('/{id}', name: 'app_contact_page_delete', methods: ['POST'])]
-    public function delete(Request $request, ContactPage $contactPage, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$contactPage->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($contactPage);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_contact_page_index', [], Response::HTTP_SEE_OTHER);
     }
 }

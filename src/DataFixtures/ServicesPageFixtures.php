@@ -15,7 +15,9 @@ class ServicesPageFixtures extends Fixture
 
         $servicesPage = new ServicesPage();
         $servicesPage->setTitle($faker->text(10))
-            ->setServicesPresentation($faker->text(50));
+            ->setServicesPresentation($faker->text(50))
+            ->setCreationPresentationText($faker->text(50))
+            ->setSpecialServicesText($faker->text(50));
 
             $manager->persist($servicesPage);
 

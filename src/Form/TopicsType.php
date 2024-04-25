@@ -50,7 +50,7 @@ class TopicsType extends AbstractType
                 'row_attr' => [
                     'class' => 'topic-form__field'
                 ],
-                'label' => 'Message',
+                'label' => 'Description',
                 'label_attr' => [
                     'class' => 'topic-form__field--label'
                 ],

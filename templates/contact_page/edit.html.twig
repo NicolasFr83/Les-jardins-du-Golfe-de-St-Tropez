@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ContactPage{% endblock %}
+{% block title %}Modification page contact - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Edit ContactPage</h1>
-
-    {{ include('contact_page/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_contact_page_index') }}">back to list</a>
-
-    {{ include('contact_page/_delete_form.html.twig') }}
+    <main class="contact-page-form">
+        <div class="contact-page-form__design">
+            <h1 class="contact-page-form__title">Modification de la page contact</h1>
+            {{ include('contact_page/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+        </div>
+        <a class="contact-page-form__link-back-contact-page" href="{{ path('app_contact_page_index') }}">Retour à la page contact</a>
+    </main>
 {% endblock %}

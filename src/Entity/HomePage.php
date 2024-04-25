@@ -22,7 +22,6 @@ class HomePage
         minMessage: 'Le titre  doit être de 2 caractères minimum.',
         maxMessage: "Le titre  ne doit pas dépasser 50 caractères"
     )]
-
     private ?string $title = null;
 
     #[ORM\Column(length: 1000)]

@@ -33,33 +33,6 @@ class ServicesPageController extends AbstractController
             'closingHourAfternoon' => $closingHourAfternoon,
         ]);
     }
-    #[Route('/new', name: 'app_services_page_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $servicesPage = new ServicesPage();
-        $form = $this->createForm(ServicesPageType::class, $servicesPage);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($servicesPage);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_services_page_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('services_page/new.html.twig', [
-            'services_page' => $servicesPage,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_services_page_show', methods: ['GET'])]
-    public function show(ServicesPage $servicesPage): Response
-    {
-        return $this->render('services_page/show.html.twig', [
-            'services_page' => $servicesPage,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'app_services_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ServicesPage $servicesPage, EntityManagerInterface $entityManager): Response
@@ -77,16 +50,5 @@ class ServicesPageController extends AbstractController
             'services_page' => $servicesPage,
             'form' => $form,
         ]);
-    }
-
-    #[Route('/{id}', name: 'app_services_page_delete', methods: ['POST'])]
-    public function delete(Request $request, ServicesPage $servicesPage, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$servicesPage->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($servicesPage);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_services_page_index', [], Response::HTTP_SEE_OTHER);
     }
 }
