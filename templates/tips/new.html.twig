@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Tips{% endblock %}
+{% block title %}Nouvelle astuce - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Create new Tips</h1>
-
-    {{ include('tips/_form.html.twig') }}
-
-    <a href="{{ path('app_tips_index') }}">back to list</a>
+    <main class="tip-form">
+        <div class="tip-form__design">
+            <h1 class="tip-form__title">Création d'une astuce</h1>
+            {{ include('tips/_form.html.twig') }}
+        </div>
+        <a class="tip-form__link-back-tips" href="{{ path('app_tips_index') }}">Retourner à la liste des astuces</a>
+    </main>
 {% endblock %}

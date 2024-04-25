@@ -1,4 +1,8 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<section class="tip-form__flux">
+    {{ form_start(form, {'attr': {'class': 'tip-form__form'}}) }}
+        {{ form_widget(form) }}
+        <div class="tip-form__button-div">
+            <button class="tip-form__button-div--button">{{ button_label|default('Save') }}</button>
+        </div>
+    {{ form_end(form) }}
+</section>

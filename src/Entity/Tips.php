@@ -52,7 +52,6 @@ class Tips
     #[ORM\Column(length: 255)]
     private ?string $imageName = null;
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -106,12 +105,12 @@ class Tips
         return $this;
     }
 
-    public function getImageName(): ?string
+    public function getImageName()
     {
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): static
+    public function setImageName($imageName): self
     {
         $this->imageName = $imageName;
 

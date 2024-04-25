@@ -3,18 +3,25 @@
 {% block title %}{{ tip.name }} - Les jardins du Golfe{% endblock %}
 
 {% block body %}
-    <main class='show-tip flex-center card-flux'>
-        <img class='show-tip__image' src="{{ vich_uploader_asset(tip, 'imageFile') }}" alt="{{ tip.name }}">
-        <h1 class='show-tip__title'>{{ tip.name }}</h1>
-        <p class='show-tip__planting'>{{ tip.planting }}</p>
-        <p class='show-tip__maintenance'>{{ tip.maintenance }}</p>
+    <main class='tip-show'>
+        <div class='tip-show__design'>
+            <img class='tip-show__image' src="{{ vich_uploader_asset(tip, 'imageFile') }}" alt="{{ tip.name }}">
+            <h1 class='tip-show__title'>{{ tip.name }}</h1>
+            <div class='tip-show__planting'>
+                <h2 class='tip-show__planting--title'>Plantation :</h2>
+                <p class='tip-show__planting--text'>{{ tip.planting }}</p>
+            </div>
+            <div class='tip-show__maintenance'>
+                <h2 class='tip-show__maintenance--title'>Entretien :</h2>
+                <p class='tip-show__maintenance--text'>{{ tip.maintenance }}</p>
+            </div>
+        </div>
+        <div class='tip-show__links'>
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('tips/_delete_form.html.twig') }}
+            <a class='tip-show__links--modifier' href="{{ path('app_tips_edit', {'id': tip.id}) }}">Modifier</a>
+        {% endif %}
+            <a class='tip-show__links--back-tips' href="{{ path('app_tips_index') }}">Retourner à la liste des sujets</a>
+        </div>
     </main>
-
-    <div class='tip-link flex-center'>
-    {% if is_granted('ROLE_ADMIN') %}
-        {{ include('tips/_delete_form.html.twig') }}
-        <a href="{{ path('app_tips_edit', {'id': tip.id}) }}">Modifier</a>
-    {% endif %}
-        <a class='show-tip-link__back-tips btn btn__linear-gradient' href="{{ path('app_tips_index') }}">Retourner à la liste des sujets</a>
-    </div>
 {% endblock %}

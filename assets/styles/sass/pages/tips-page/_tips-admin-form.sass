@@ -1,0 +1,109 @@
+@use "../../abstracts/_all" as abstracts
+
+.tip-form
+    +abstracts.d-flex(column, center, center)
+
+    &__design
+        width: 80%
+        margin-top: 10vh
+        margin-bottom: 10vh
+        padding: 5vw
+        box-shadow: 1px 1px 47px -3px green
+        border-radius: 1rem 1rem 1rem 1rem
+        outline: solid 0.3rem
+        outline-color: yellow
+        +abstracts.responsive('litle-tablet')
+            width: 70%
+        +abstracts.responsive('laptop')
+            width: 50%
+
+    &__title
+        text-align: center
+        color: green
+        text-decoration: underline
+
+    &__flux
+        +abstracts.d-flex(column, center, center)
+        margin-top: 5vw
+        max-width: 100%
+
+    &__form
+        +abstracts.d-flex(column, center, stretch)
+        width: 100%
+        +abstracts.responsive('litle-tablet')
+            width: 80%
+        +abstracts.responsive('laptop')
+            width: 70%
+
+    &__field
+        +abstracts.d-flex(column, center, space-between)
+        margin-bottom:5vw
+        max-width: 100%
+
+        &--input
+            max-width: 100%
+    
+    &__field-checkbox
+        +abstracts.d-flex(column, center, center)
+        margin-top: 5vw
+        margin-bottom:5vw
+        max-width: 100%
+        +abstracts.responsive('litle-tablet')
+            margin-top: 0
+
+        &--label
+            margin-bottom: 1vh
+            text-align: center
+
+        &--input
+            max-width: 100%
+
+    &__button-div
+        +abstracts.d-flex(column, center, center)
+
+        &--button
+            border-radius: 1.5rem
+            font-weight: 500
+            transition: 0.5s ease-in
+            margin: 0.7vw
+            padding: 0.7vw 1.5vw
+            background: linear-gradient(to bottom right, green, yellow)
+            width: 10rem
+            text-align: center
+            padding: 0.7vw 0.5vw
+            +abstracts.responsive(big-phone)
+                width: 20rem
+                padding: 0.7vw 1.5vw
+            &:hover
+                box-shadow: 1px 1px 10px -1px green
+                cursor: pointer
+
+    &__delete
+        text-align: center
+        text-decoration: underline
+        text-underline-offset: 0.3rem
+        color: black
+        margin: 0.5vh
+        &:hover
+            color: yellow
+        +abstracts.responsive('litle-tablet')
+            margin-left: 0.5vw
+
+    &__link-back-topics
+        text-align: center
+        text-decoration: underline
+        text-underline-offset: 0.3rem
+        color: green
+        &:hover
+            text-decoration-color: yellow
+
+#tips_imageFile_file
+    margin: 1rem
+    width: 100%
+
+#tips_imageFile_delete
+    margin-left: 0.5rem
+
+.vich-image a img
+    width: 100%
+    margin: 0.5rem 0 0.5rem 0

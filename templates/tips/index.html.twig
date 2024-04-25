@@ -3,34 +3,29 @@
 {% block title %}Tutos - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Nos tutos</h1>
+    <main class="tips">
+        <h1 class="tips__title">Nos tutos</h1>
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <div class='new-tip'>
-            <a href="{{ path('app_tips_new') }}" class='underline'>Ajouter un sujet</a>
-        </div>
-    {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class='tips__modifications'>
+                <a href="{{ path('app_tips_new') }}" class='tips__modifications--new'>Ajouter un sujet</a>
+            </div>
+        {% endif %}
 
-    <ul class="tips__list flex-center">
-        {% for tip in tips %}
-            <li class="card-tip tip-flux flex-center">
-                <div class='card-tip__composition flex-center'>
-                    <img class="tip__image
-                    " src="{{ vich_uploader_asset(tip, 'imageFile') }}" alt={{tip.name}} width=100px height=100px>
-                    <div class="tip__description flex-center">
-                        <p class="tip__description--title">{{tip.name}}</p>
-                        <p class="tip__description--details">{{tip.planting}}</p>
-                        <p class="tip__description--details">{{tip.maintenance}}</p>
-                    </div>
-                </div>
-                <a href="{{ path('app_tips_show', {'id': tip.id})}}" class='link-to-show-tip underline'>Voir le sujet</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <div class='tip__modification flex-center'>
-                        <a href="{{ path('app_tips_edit', {'id': tip.id}) }}" class='tip__modification--modifier underline'>Modifier</a>
-                        <a href="{{ path('app_tips_delete', {'id': tip.id}) }}" class='tip__modification--delete underline'>Supprimer</a>
-                    </div>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+        <ul class="tips__list">
+            {% for tip in tips %}
+                <li class="tip">
+                    <img class="tip__image" src="{{ vich_uploader_asset(tip, 'imageFile') }}" alt={{tip.name}} width=100px height=100px>
+                    <p class="tip__title">{{tip.name}}</p>
+                    <a href="{{ path('app_tips_show', {'id': tip.id})}}" class='tip__link-to-show-tip'>Voir le sujet</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class='tip__modifications'>
+                            <a href="{{ path('app_tips_edit', {'id': tip.id}) }}" class='tip__modifications--modifier'>Modifier</a>
+                            <a href="{{ path('app_tips_delete', {'id': tip.id}) }}" class='tip__modifications--delete'>Supprimer</a>
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
 {% endblock %}
