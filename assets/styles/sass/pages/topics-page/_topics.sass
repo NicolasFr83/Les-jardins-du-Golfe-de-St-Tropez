@@ -1,0 +1,93 @@
+@use '../../abstracts/_all' as abstracts
+
+.topics
+    +abstracts.d-flex(column, center, center)
+
+    &__modifications
+        +abstracts.d-flex(column, center, center)
+        margin-bottom: 2vh
+
+        &--new
+            text-align: center
+            text-decoration: underline
+            text-underline-offset: 0.3rem
+            color: green
+            &:hover
+                text-decoration-color: yellow
+
+    &__list
+        +abstracts.d-flex(column, center, center)
+        margin-bottom: 20vh
+
+.topic
+    background-color: green
+    color: yellow
+    width: 90%
+    +abstracts.d-flex(column, center, center)
+    margin-top: 3rem
+    box-shadow: 1px 1px 20px 6px black
+    border-radius: 1rem 1rem 1rem 1rem
+    outline: solid 0.3rem
+    outline-color: green
+    +abstracts.responsive('litle-tablet')
+        width: 70%
+    +abstracts.responsive('laptop')
+        width: 50%
+
+    &__image
+        margin: 0.5rem
+        width: 90%
+        height: 100%
+        object-fit: cover
+        border-radius: 1rem
+        border: solid 0.2rem black
+        +abstracts.responsive('litle-tablet')
+            margin: 1.5rem
+
+    &__title
+        padding: 0.5rem
+        text-align: center
+        color: yellow
+        width: 100%
+        background-color: #004000
+
+    &__text
+        text-align: justify
+        padding: 1rem
+
+    &__link-to-show-topic
+        margin-bottom: 3vh
+        text-align: center
+        text-decoration: underline
+        text-underline-offset: 0.3rem
+        color: black
+        &:hover
+            color: yellow
+
+    &__modifications
+        margin: 2.5vh
+        +abstracts.d-flex(column, center, center)
+        +abstracts.responsive('litle-tablet')
+            margin: 1.5vh
+            +abstracts.d-flex(row, center, center)
+
+        &--modifier
+            text-align: center
+            text-decoration: underline
+            text-underline-offset: 0.3rem
+            color: black
+            &:hover
+                color: yellow
+            +abstracts.responsive('litle-tablet')
+                margin-right: 0.5vw
+
+        &--delete
+            text-align: center
+            text-decoration: underline
+            text-underline-offset: 0.3rem
+            color: black
+            margin: 0.5vh
+            &:hover
+                color: yellow
+            +abstracts.responsive('litle-tablet')
+                margin-left: 0.5vw

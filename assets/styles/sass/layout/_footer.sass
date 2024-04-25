@@ -1,14 +1,14 @@
-@use '../abstracts/_all' as abstract
+@use '../abstracts/_all' as abstracts
 
 
 .footer-custom
-    background-color: abstract.$blackgreen
-    @include abstract.d-flex(column ,center, center)
+    background-color: abstracts.$blackgreen
+    @include abstracts.d-flex(column ,center, center)
 
     &__infos
-        background-color: abstract.$darkgreen
-        color: abstract.$yellow
-        @include abstract.d-flex(column ,center, center)
+        background-color: abstracts.$darkgreen
+        color: abstracts.$yellow
+        @include abstracts.d-flex(column ,center, center)
         width: 70%
         border-radius: 1rem
         margin-top: 3%

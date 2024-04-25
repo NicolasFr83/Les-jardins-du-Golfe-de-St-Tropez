@@ -1,4 +1,8 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<section class="topic-form__flux">
+    {{ form_start(form, {'attr': {'class': 'topic-form__form'}}) }}
+        {{ form_widget(form) }}
+        <div class="topic-form__button-div">
+            <button class="topic-form__button-div--button">{{ button_label|default('Sauvegarder') }}</button>
+        </div>
+    {{ form_end(form) }}
+</section>

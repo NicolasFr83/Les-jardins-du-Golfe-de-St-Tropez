@@ -6,13 +6,10 @@ const watchFiltersTopics = () => {
         const filtersForm = document.querySelectorAll('#filters_form');
         const filtersButton = document.querySelector('#js_filters_button');
 
-        console.log(filtersForm);
-        console.log(filtersButton);
-
         if (filtersForm.length > 0) {
             filtersButton.addEventListener('click', () => {
-                filtersForm[0].classList.toggle('hide');
-                filtersForm[0].classList.toggle('show-flex');
+                filtersForm[0].classList.toggle('hide-filters-topics');
+                filtersForm[0].classList.toggle('show-filters-topics');
             });
         }
 

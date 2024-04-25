@@ -1,37 +1,37 @@
-@use '../abstracts/_all' as abstract
+@use '../../abstracts/_all' as abstracts
 
 
 .services
-    +abstract.d-flex (row, center, baseline) 
+    +abstracts.d-flex (row, center, baseline) 
     text-align: center
-    +abstract.title(abstract.$title-2, abstract.$yellow)
+    +abstracts.title(abstracts.$title-2, abstracts.$yellow)
     margin-top: 2rem
     text-decoration: underline
     text-underline-offset: 0.5rem
     text-decoration-color: #cfe202
-    +abstract.responsive("big-phone")
-        +abstract.title(abstract.$title-1, abstract.$yellow)
+    +abstracts.responsive("big-phone")
+        +abstracts.title(abstracts.$title-1, abstracts.$yellow)
         margin-top: 4rem
 
     &__icon
-        @include abstract.spin(5s)
+        @include abstracts.spin(5s)
         margin: 2rem
 
     &__text
-        +abstract.text(abstract.$text-3, abstract.$yellow)
+        +abstracts.text(abstracts.$text-3, abstracts.$yellow)
         text-align: center
         padding: 1.5rem
-        +abstract.responsive("litle-tablet")
+        +abstracts.responsive("litle-tablet")
             margin-top: 3rem
             margin-left: auto
             margin-right: auto
             max-width: 80%
-            +abstract.text(abstract.$text-2, abstract.$yellow)
+            +abstracts.text(abstracts.$text-2, abstracts.$yellow)
 
 
     &__contain
         margin-top: 3rem
-        background: abstract.$darkgreen
+        background: abstracts.$darkgreen
         border-radius: 15px
         box-shadow: 20px 20px 13px 0px
         max-width: 90%
@@ -41,24 +41,24 @@
         padding-bottom: 1px
 
     &__title
-        +abstract.d-flex (row, start, baseline) 
-        +abstract.text(abstract.$title-3, abstract.$yellow)
+        +abstracts.d-flex (row, start, baseline) 
+        +abstracts.text(abstracts.$title-3, abstracts.$yellow)
         margin-top: 2rem
-        +abstract.responsive("big-phone")
+        +abstracts.responsive("big-phone")
             margin-top: 6rem
             margin-left: 2rem
             text-decoration: underline
             text-underline-offset: 0.5rem
             text-decoration-color: #cfe202
-            +abstract.text(abstract.$text-2, abstract.$yellow)
+            +abstracts.text(abstracts.$text-2, abstracts.$yellow)
 
 .contain
-    +abstract.d-flex (column, center, center)
+    +abstracts.d-flex (column, center, center)
     margin-top: 4rem
     margin-bottom: 6rem
-    +abstract.responsive("tablet")
+    +abstracts.responsive("tablet")
         margin-top: 3rem
-        +abstract.d-flex (row, center, baseline) 
+        +abstracts.d-flex (row, center, baseline) 
         transition: all 0.3s ease
 
     &__images
@@ -69,7 +69,7 @@
         &:hover 
             width: 300px
             transform: scale(1.4) 
-            +abstract.responsive("litle-tablet")
+            +abstracts.responsive("litle-tablet")
                 width: 300px
                 transform: scale(1.9) 
 

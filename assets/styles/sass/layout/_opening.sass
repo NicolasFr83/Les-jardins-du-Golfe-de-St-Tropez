@@ -1,31 +1,32 @@
-@use "../abstracts/_all" as abstract
+@use "../abstracts/_all" as abstracts
     
     
 .openingSection
-    background-color: abstract.$blackgreen
+    width: 100%
+    background-color: abstracts.$blackgreen
     padding-top: 1rem
-    +abstract.d-flex(row, center, center)
+    +abstracts.d-flex(row, center, center)
     margin-top: 8rem
 
     &__days
-        background-color: abstract.$darkgreen
-        color: abstract.$yellow
+        background-color: abstracts.$darkgreen
+        color: abstracts.$yellow
         width: 70%
         border-radius: 1rem
-        +abstract.d-flex(column, center, center)
-        +abstract.responsive('litle-tablet')
-            +abstract.d-flex(row, space-around, center)
+        +abstracts.d-flex(column, center, center)
+        +abstracts.responsive('litle-tablet')
+            +abstracts.d-flex(row, space-around, center)
 
         
     &__logo
         max-width: 40%
         margin: 3%
-        +abstract.responsive('litle-tablet')
+        +abstracts.responsive('litle-tablet')
             max-width: 26%
 
     &__open
-        +abstract.d-flex(column, center, center)
+        +abstracts.d-flex(column, center, center)
 
     &__title
-        +abstract.text(abstract.$text-4, abstract.$yellow)
+        +abstracts.text(abstracts.$text-4, abstracts.$yellow)
         font-weight: bold

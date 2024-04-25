@@ -1,29 +1,24 @@
-	<section class="topics flux">
+	<section class="topics">
 		{% if is_granted('ROLE_ADMIN') %}
-			<div class='new-topic'>
-				<a href="{{ path('app_topics_new') }}" class='underline'>Ajouter un sujet</a>
+			<div class='topics__modifications'>
+				<a href="{{ path('app_topics_new') }}" class='topics__modifications--new'>Ajouter un sujet</a>
 			</div>
 		{% endif %}
-		<ul class="topics__list flex-center">
-			{# {% if is_granted('IS_AUTHENTICATED_FULLY') %} #}
-				{% for topic in topics %}
-					<li class="card-topic topic-flux flex-center">
-						<div class='card-topic__composition flex-center'>
-							<img class="topic__image" src="{{ vich_uploader_asset(topic, 'imageFile') }}" alt={{topic.name}} width=100px height=100px>
-							<div class="topic__description flex-center">
-								<p class="topic__description--title">{{topic.name}}</p>
-								<p class="topic__description--details">{{topic.description}}</p>
-							</div>
+		<ul class="topics__list">
+			{% for topic in topics %}
+				<li class="topic">
+					<img class="topic__image" src="{{ vich_uploader_asset(topic, 'imageFile') }}" alt={{topic.name}} width=100px height=100px>
+					<p class="topic__title">{{topic.name}}</p>
+					<p class="topic__text">{{topic.description}}</p>
+					<a href="{{ path('app_topics_show', {'id': topic.id})}}" class='topic__link-to-show-topic'>Voir le sujet</a>
+					{% if is_granted('ROLE_ADMIN') %}
+						<div class='topic__modifications'>
+							<a href="{{ path('app_topics_edit', {'id': topic.id}) }}" class='topic__modifications--modifier'>Modifier</a>
+							<a href="{{ path('app_topics_delete', {'id': topic.id}) }}" class='topic__modifications--delete'>Supprimer</a>
 						</div>
-						<a href="{{ path('app_topics_show', {'id': topic.id})}}" class='link-to-show-topic underline'>Voir le sujet</a>
-						{% if is_granted('ROLE_ADMIN') %}
-							<div class='topic__modification flex-center'>
-								<a href="{{ path('app_topics_edit', {'id': topic.id}) }}" class='topic__modification--modifier underline'>Modifier</a>
-								<a href="{{ path('app_topics_delete', {'id': topic.id}) }}" class='topic__modification--delete underline'>Supprimer</a>
-							</div>
-						{% endif %}
-					</li>
-				{% endfor %}
+					{% endif %}
+				</li>
+			{% endfor %}
 		</ul>
 	</section>
 
@@ -39,30 +34,26 @@
 		{# Permet de récupérer le nombre de pages total.
 		Le filtre twig round avec ceil permet de récupérer l'entier supérieur,
 		0 correspondant au nombre de chiffre après la virgule #}
-		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			{% set pages = ((totalForAlltopics / limit)|round(0, 'ceil')) %}
-		{% else %}
-			{% set pages = ((total / limit)|round(0, 'ceil')) %}
-		{% endif %}
-		<ul class='paging__list flex-center'>
-			<li class='paging__list--first-page'>
-				<a href="{{path('app_topics_index', {'page': 1}) }}&{{queryFilters}}">Première page</a>
+		{% set pages = ((total / limit)|round(0, 'ceil')) %}
+		<ul class='paging__list'>
+			<li>
+				<a class='paging__list--first-page' href="{{path('app_topics_index', {'page': 1}) }}&{{queryFilters}}">Première page</a>
 			</li>
-			<li class='{{ (page == 1) ? 'disabled' : ''}} paging__list--previous-page'>
-				<a href="{{ (page > 1) ? path('app_topics_index', {'page': page - 1}) : '' }}&{{queryFilters}}">Page précédente</a>
+			<li class='{{ (page == 1) ? 'disabled' : ''}}'>
+				<a class="paging__list--previous-page" href="{{ (page > 1) ? path('app_topics_index', {'page': page - 1}) : '' }}&{{queryFilters}}">Page précédente</a>
 			</li>
-			<div class='flex-center'>
+			<div class='paging__pages-list'>
 				{% for item in 1..pages %}
-					<li class='{{ (page == item) ? 'active' : ''}} paging__list--item paging-topics-flux'>
-						<a href="{{ path('app_topics_index', {'page': item}) }}&{{queryFilters}}">{{ item }}</a>
+					<li class='{{ (page == item) ? 'active' : ''}} paging__list--item-container'>
+						<a class="paging__list--item" href="{{ path('app_topics_index', {'page': item}) }}&{{queryFilters}}">{{ item }}</a>
 					</li>
 				{% endfor %}
 			</div>
-			<li class='{{ (page == pages) ? 'disabled' : ''}} paging__list--next-page'>
-				<a href="{{ (page < pages) ? path('app_topics_index', {'page': page + 1}) : '' }}&{{queryFilters}}">Page suivante</a>
+			<li class='{{ (page == pages) ? 'disabled' : ''}}'>
+				<a class="paging__list--next-page" href="{{ (page < pages) ? path('app_topics_index', {'page': page + 1}) : '' }}&{{queryFilters}}">Page suivante</a>
 			</li>
-			<li class='paging__list--last-page'>
-				<a href="{{path('app_topics_index', {'page': pages}) }}&{{queryFilters}}">Dernière page</a>
+			<li>
+				<a class='paging__list--last-page' href="{{path('app_topics_index', {'page': pages}) }}&{{queryFilters}}">Dernière page</a>
 			</li>
 		</ul>
 	</section>

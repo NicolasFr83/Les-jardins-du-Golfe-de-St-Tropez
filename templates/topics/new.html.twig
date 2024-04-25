@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Topics{% endblock %}
+{% block title %}Nouveau sujet - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Create new Topics</h1>
-
-    {{ include('topics/_form.html.twig') }}
-
-    <a href="{{ path('app_topics_index') }}">back to list</a>
+    <main class="topic-form">
+        <div class="topic-form__design">
+            <h1 class="topic-form__title">Création d'un sujet</h1>
+            {{ include('topics/_form.html.twig') }}
+        </div>
+        <a class="topic-form__link-back-topics" href="{{ path('app_topics_index') }}">Retourner à la liste des sujets</a>
+    </main>
 {% endblock %}

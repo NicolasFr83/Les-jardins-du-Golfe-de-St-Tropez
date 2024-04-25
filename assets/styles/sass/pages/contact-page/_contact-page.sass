@@ -1,0 +1,23 @@
+@use "../../abstracts/_all" as abstracts
+
+.contact-page
+    +abstracts.d-flex(column, center, center)
+    margin-top: 10vh
+
+    &__description
+        +abstracts.d-flex(column, center, center)
+
+        &--title
+            text-align: center
+
+        &--text
+            text-align: center
+            margin-top: 5vh
+
+    &__admin-link
+        text-align: center
+        text-decoration: underline
+        text-underline-offset: 0.3rem
+        color: green
+        &:hover
+            text-decoration-color: yellow

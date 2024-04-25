@@ -3,22 +3,24 @@
 {% block title %}{{ topic.name }} - Les jardins du Golfe{% endblock %}
 
 {% block body %}
-    <main class='show-topic flex-center card-flux'>
-        <img class='show-topic__image' src="{{ vich_uploader_asset(topic, 'imageFile') }}" alt="{{ topic.name }}">
-        <h1 class='show-topic__title'>{{ topic.name }}</h1>
-        <p>Nom latin : {{topic.latinName}}</p>
-        <p class='show-topic__description'>{{ topic.description }}</p>
-        <p>Arrosage : {{ topic.watering }}</p>
-        <p>Lieu de plantation : {{ topic.exposition }}</p>
-        <p>Exposition : {{ topic.exposure }}</p>
+    <main class="topic-show">
+        <div class="topic-show__design">
+            <img class="topic-show__image" src="{{ vich_uploader_asset(topic, 'imageFile') }}" alt="{{ topic.name }}">
+            <h1 class="topic-show__title">{{ topic.name }}</h1>
+            <div class="topic-show__presentation">
+                <p class="topic-show__presentation--text"><b>Nom latin : </b>{{topic.latinName}}</p>
+                <p class="topic-show__presentation--text"><b>Arrosage : </b>{{ topic.watering }}</p>
+                <p class="topic-show__presentation--text"><b>Lieu de plantation : </b>{{ topic.exposition }}</p>
+                <p class="topic-show__presentation--text"><b>Exposition : </b>{{ topic.exposure }}</p>
+                <p class="topic-show__presentation--text">{{ topic.description }}</p>
+            </div>
+        </div>
+        <div class="topic-show__links">
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('topics/_delete_form.html.twig') }}
+            <a class="topic-show__links--modifier" href="{{ path('app_topics_edit', {'id': topic.id}) }}">Modifier</a>
+        {% endif %}
+            <a class="topic-show__links--back-topics" href="{{ path('app_topics_index') }}">Retourner à la liste des sujets</a>
+        </div>
     </main>
-
-    <div class='topic-link flex-center'>
-    {% if is_granted('ROLE_ADMIN') %}
-        {{ include('topics/_delete_form.html.twig') }}
-        <a href="{{ path('app_topics_edit', {'id': topic.id}) }}">edit</a>
-    {% endif %}
-        <a class='show-topic-link__back-topics btn btn__linear-gradient' href="{{ path('app_topics_index') }}">Retourner à la liste des sujets</a>
-    </div>
-
 {% endblock %}

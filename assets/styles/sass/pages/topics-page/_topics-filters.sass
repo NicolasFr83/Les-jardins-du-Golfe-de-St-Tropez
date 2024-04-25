@@ -1,0 +1,96 @@
+@use "../../abstracts/_all" as abstracts
+
+.filters
+    +abstracts.d-flex(column, center, center)
+    margin-top: 5vh
+
+    &__title
+        color: green
+        cursor: pointer
+        text-decoration: underline
+        text-decoration-color: green
+        text-underline-offset: 0.2rem
+        margin: auto
+        &:hover
+            text-decoration-color: yellow
+
+    &__form
+        +abstracts.d-flex(column, center, center)
+        margin-top: 3rem
+        border-radius: 1rem 1rem 1rem 1rem
+        outline: solid 0.3rem
+        outline-color: green
+        padding: 1rem
+        box-shadow: 1px 1px 47px -3px dark
+        +abstracts.responsive(litle-tablet)
+            +abstracts.d-flex(row, center, flex-start)
+            +abstracts.responsive(laptop)
+                +abstracts.d-flex(column, center, center)
+
+    &__checkbox
+        margin-top: 1rem
+        +abstracts.responsive(laptop)
+            margin-top: 0
+
+    &__label
+        +abstracts.responsive('laptop')
+            margin-left: 0.2rem
+            margin-right: 1rem
+
+.category-filters
+    +abstracts.d-flex(column, center, center)
+
+    &__title
+        color: yellow
+        background-color: green
+        padding: 0.3rem
+        border-radius: 0.3rem
+        text-align: center
+
+    &__select-container
+        +abstracts.d-flex(column, center, center)
+        +abstracts.responsive(laptop)
+            +abstracts.d-flex(row, center, center)
+            margin-top: 1rem
+
+        &--selects
+            +abstracts.d-flex(column, center, center)
+            // +abstracts.responsive(laptop)
+            //     align-items: center
+            +abstracts.responsive(laptop)
+                +abstracts.d-flex(row, center, center)
+
+.exposure-filters
+    +abstracts.d-flex(column, center, center)
+    margin-top: 3rem
+    +abstracts.responsive(litle-tablet)
+        margin-top: 0
+        margin-left: 1rem
+    +abstracts.responsive(laptop)
+        margin-left: 0
+        margin-top: 3rem
+
+    &__title
+        color: yellow
+        background-color: green
+        padding: 0.3rem
+        border-radius: 0.3rem
+        text-align: center
+
+    &__select-container
+        +abstracts.d-flex(column, center, center)
+        +abstracts.responsive(laptop)
+            +abstracts.d-flex(row, center, center)
+            margin-top: 1rem
+        &--selects
+            +abstracts.d-flex(column, center, center)
+            // +abstracts.responsive(laptop)
+            //     align-items: center
+            +abstracts.responsive(laptop)
+                +abstracts.d-flex(row, center, center)
+
+.hide-filters-topics
+    display: none
+
+.show-filters-topics
+    display: flex

@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Topics{% endblock %}
+{% block title %}Modification sujet - Les Jardins du Golfe{% endblock %}
 
 {% block body %}
-    <h1>Edit Topics</h1>
-
-    {{ include('topics/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_topics_index') }}">back to list</a>
-
-    {{ include('topics/_delete_form.html.twig') }}
+    <main class="topic-form">
+        <div class="topic-form__design">
+            <h1 class="topic-form__title">Modification du sujet</h1>
+            {{ include('topics/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+        </div>
+        <a class="topic-form__delete" href="{{ path('app_topics_index') }}">Retourner à la liste des sujets</a>
+        {{ include('topics/_delete_form.html.twig') }}
+    </main>
 {% endblock %}

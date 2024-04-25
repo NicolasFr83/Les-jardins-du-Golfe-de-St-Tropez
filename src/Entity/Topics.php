@@ -113,12 +113,12 @@ class Topics
         return $this;
     }
 
-    public function getImageName(): ?string
+    public function getImageName()
     {
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): static
+    public function setImageName($imageName): self
     {
         $this->imageName = $imageName;
 

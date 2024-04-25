@@ -1,0 +1,81 @@
+@use '../../abstracts/_all' as abstracts
+
+.paging
+    +abstracts.d-flex(row, center, center)
+
+    &__list
+        +abstracts.d-flex(column, center, center)
+        margin: 3rem
+        +abstracts.responsive("tablet")
+            +abstracts.d-flex(row, center, center)
+
+        &--first-page
+            color: green
+            &:hover
+                padding: 0.5rem
+                background-color: green
+                cursor: pointer
+                color: yellow
+            +abstracts.responsive("tablet")
+                margin-right: 1rem
+
+        &--previous-page
+            margin-top: 0.5rem
+            color: green
+            &:hover
+                padding: 0.5rem
+                background-color: green
+                cursor: pointer
+                color: yellow
+            +abstracts.responsive("tablet")
+                margin-top: 0
+                margin-right: 1rem
+
+        &--item-container
+            margin-top: 0.5rem
+            margin-right: 0.3rem
+            background-color: yellow
+            padding: 0.5rem
+            border-radius: 1rem
+            &:hover
+                cursor: pointer
+                box-shadow: 1px 1px 47px -3px black
+                background-color: green
+            +abstracts.responsive("tablet")
+                margin-top: 0
+                margin-right: 0.5rem
+
+        &--item
+            color: black
+
+        &--next-page
+            margin-top: 0.5rem
+            color: green
+            &:hover
+                padding: 0.5rem
+                background-color: green
+                cursor: pointer
+                color: yellow
+            +abstracts.responsive("tablet")
+                margin-top: 0
+                margin-right: 1rem
+                margin-left: 0.5rem
+
+        &--last-page
+            margin-top: 0.5rem
+            color: green
+            &:hover
+                padding: 0.5rem
+                background-color: green
+                cursor: pointer
+                color: yellow
+            +abstracts.responsive("tablet")
+                margin-top: 0
+
+    &__pages-list
+        +abstracts.d-flex(row, center, center)
+
+
+.active
+    background-color: green
+    color: yellow
