@@ -13,9 +13,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
+#[Route('/register')]
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
+    #[Route('/', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -40,6 +41,8 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
+
+            // return $this->redirectToRoute('app_home_page_index');
         }
 
         return $this->render('registration/register.html.twig', [

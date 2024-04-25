@@ -42,11 +42,11 @@
             </div>
             <a  class="caroussel__link" href="{{ path('app_topics_index')}}">Aller vers notre pépinière</a>
         </section>
-		{# {% if is_granted('ROLE_ADMIN') %}		 #}
+		{% if is_granted('ROLE_ADMIN') %}		
 			<div class="main">
 				<a class="buton" href="{{ path('app_home_page_edit', {'id': home_page.id }) }}">Modifier</a>
 			</div>
-		{# {% endif %} #}
+		{% endif %}
         {% endfor %}
 	<section class="openingSection">
         {% include "opening/index.html.twig" %}

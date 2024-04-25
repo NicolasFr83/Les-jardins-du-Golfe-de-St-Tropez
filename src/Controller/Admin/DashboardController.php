@@ -68,6 +68,7 @@ class DashboardController extends AbstractDashboardController
             ->setPermission('ROLE_ADMIN');
         yield MenuItem::linktocrud('Utilisateur', 'fa-solid fa-person', User::class)
             ->setPermission('ROLE_ADMIN');
-
+        yield MenuItem::linkToRoute('Retour au site', 'fas fa-home', 'app_home_page_index');
+        yield MenuItem::linkToLogout('Se déconnecter', 'fa fa-exit');
     }
 }

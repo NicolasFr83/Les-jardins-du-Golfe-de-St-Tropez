@@ -11,21 +11,37 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\OpeningRepository;
+use App\Repository\FormContactRepository;
+use App\Entity\FormContact;
+use App\Form\FormContactType;
 
 
 #[Route('/contact/page')]
 class ContactPageController extends AbstractController
 {
     #[Route('/', name: 'app_contact_page_index', methods: ['GET'])]
-    public function index(ContactPageRepository $contactPageRepository, OpeningRepository $openingRepository): Response
+    public function index(ContactPageRepository $contactPageRepository, Request $request, OpeningRepository $openingRepository, FormContactRepository $formContactRepository): Response
     {
+        $formContact = new FormContact();
+        $form = $this->createForm(FormContactType::class, $formContact);
+        $form->handleRequest($request);
+        
         $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
         $openingHourMorning = $openingHours->getOpeninghourmorning();
         $closingHourMorning = $openingHours->getClosinghourmorning();
         $openingHourAfternoon = $openingHours->getOpeninghourafternoon();
         $closingHourAfternoon = $openingHours->getClosinghourafternoon();
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formContactRepository->save($formContact, true);
+
+            $this->addFlash('messageFormContactSent', 'Le formulaire de contact a bien été envoyé.');
+            return $this->redirectToRoute('app_home_page_index', [], Response::HTTP_SEE_OTHER);
+    }
+
         return $this->render('contact_page/index.html.twig', [
+            'formContact' => $formContact,
+            'form' => $form->createView(),
             'contact_pages' => $contactPageRepository->findAll(),
             'opening' => $openingRepository->findAll(),
             'openingHourMorning' => $openingHourMorning,
@@ -56,13 +72,6 @@ class ContactPageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_contact_page_show', methods: ['GET'])]
-    public function show(ContactPage $contactPage): Response
-    {
-        return $this->render('contact_page/show.html.twig', [
-            'contact_page' => $contactPage,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'app_contact_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ContactPage $contactPage, EntityManagerInterface $entityManager): Response
