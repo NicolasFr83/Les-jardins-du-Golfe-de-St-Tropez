@@ -11996,39 +11996,6 @@ textarea.form-control-lg {
   width: 15rem;
 }
 
-.main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: baseline;
-  text-align: center;
-  font-family: "Cormorant", serif;
-  font-size: 2rem;
-  color: #00DD00;
-  margin-top: 2rem;
-  text-decoration: underline;
-  text-underline-offset: 0.5rem;
-  text-decoration-color: #cfe202;
-}
-@media screen and (min-width: 482px) {
-  .main {
-    font-family: "Cormorant", serif;
-    font-size: 3rem;
-    color: #00DD00;
-    margin-top: 5rem;
-  }
-}
-.main__icon {
-  display: none;
-  animation: spin 5s infinite linear;
-}
-@media screen and (min-width: 482px) {
-  .main__icon {
-    display: block;
-    margin: 3rem;
-    height: 36px;
-  }
-}
 .main__text {
   text-align: center;
   font-family: "Life Savers", serif;
@@ -12142,6 +12109,18 @@ textarea.form-control-lg {
   text-underline-offset: 0.5rem;
   transform: translateY(-0.5rem);
   text-decoration-color: #e7c800;
+}
+
+.admin-home-page-edit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+.admin-home-page-edit__button {
+  width: 20%;
 }
 
 .home-page-form {
@@ -12270,50 +12249,6 @@ textarea.form-control-lg {
   text-decoration-color: yellow;
 }
 
-.services {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: baseline;
-  text-align: center;
-  font-family: "Cormorant", serif;
-  font-size: 2rem;
-  color: #e7c800;
-  margin-top: 2rem;
-  text-decoration: underline;
-  text-underline-offset: 0.5rem;
-  text-decoration-color: #cfe202;
-}
-@media screen and (min-width: 482px) {
-  .services {
-    font-family: "Cormorant", serif;
-    font-size: 3rem;
-    color: #e7c800;
-    margin-top: 4rem;
-  }
-}
-.services__icon {
-  animation: spin 5s infinite linear;
-  margin: 2rem;
-}
-.services__text {
-  font-family: "Life Savers", serif;
-  font-size: 1.5rem;
-  color: #e7c800;
-  text-align: center;
-  padding: 1.5rem;
-}
-@media screen and (min-width: 768px) {
-  .services__text {
-    margin-top: 3rem;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 80%;
-    font-family: "Life Savers", serif;
-    font-size: 2rem;
-    color: #e7c800;
-  }
-}
 .services__contain {
   margin-top: 3rem;
   background: #038b16;
@@ -14368,27 +14303,33 @@ textarea.form-control-lg {
 
 .title-page {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title-page__design {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: baseline;
-  font-family: "Cormorant", serif;
-  font-size: 2rem;
-  color: #00DD00;
-  margin-top: 2rem;
-}
-@media screen and (min-width: 482px) {
-  .title-page {
-    font-family: "Cormorant", serif;
-    font-size: 3rem;
-    color: #00DD00;
-    margin-top: 5rem;
-  }
 }
 .title-page__title {
   text-decoration: underline;
   text-underline-offset: 0.5rem;
   text-decoration-color: #cfe202;
   text-align: center;
+  font-family: "Cormorant", serif;
+  font-size: 2rem;
+  color: #00DD00;
+  margin-top: 2rem;
+}
+@media screen and (min-width: 482px) {
+  .title-page__title {
+    font-family: "Cormorant", serif;
+    font-size: 3rem;
+    color: #00DD00;
+    margin-top: 5rem;
+  }
 }
 .title-page__icon {
   display: none;

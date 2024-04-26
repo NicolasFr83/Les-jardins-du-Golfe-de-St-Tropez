@@ -1,18 +1,21 @@
 @use '../abstracts/_all' as abstracts
     
 .title-page
-    +abstracts.d-flex (row, center, baseline) 
-    +abstracts.title(abstracts.$title-2, abstracts.$green)
-    margin-top: 2rem
-    +abstracts.responsive("big-phone")
-        +abstracts.title(abstracts.$title-1, abstracts.$green)
-        margin-top: 5rem
+    +abstracts.d-flex (column, center, center) 
+
+    &__design
+        +abstracts.d-flex(row, center, baseline)
 
     &__title
         text-decoration: underline
         text-underline-offset: 0.5rem
         text-decoration-color: #cfe202
         text-align: center
+        +abstracts.title(abstracts.$title-2, abstracts.$green)
+        margin-top: 2rem
+        +abstracts.responsive("big-phone")
+            +abstracts.title(abstracts.$title-1, abstracts.$green)
+            margin-top: 5rem
 
     &__icon
         display: none

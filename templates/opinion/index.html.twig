@@ -7,7 +7,11 @@
         {% for message in app.flashes('messageOpinionSent') %}
             <p id='js-opinion-sent' class='app-flash-message'>{{message}}</p>
         {% endfor %}
-        <h1 class="opinions__title">Vos avis comptent !</h1>
+        <section class="title-page__design">
+            <img src="{{ asset('images/palmier.png')}}" alt="palmier qui tourne" class='title-page__icon'>
+            <h1 class="title-page__title">Vos avis comptent !</h1>
+            <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
+        </section>
 
         <div class='opinions__modifications'>
             <a href="{{ path('app_opinion_new') }}" class='opinions__modifications--new'>Ajouter un avis</a>

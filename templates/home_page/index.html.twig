@@ -3,15 +3,15 @@
 {% block title %}Les jardins du Golfe de St Tropez{% endblock %}
 
 {% block body %}
-    <main>
+    <main class="main">
         {% for message in app.flashes('messageFormContactSent') %}
             <p id='js-contact-form-sent' class='app-flash-message'>{{message}}</p>
         {% endfor %}
         {% for home_page in home_pages %}
-        <section class="main">
-            <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='main__icon main'>
-            <h1 class="main">{{ home_page.title }}</h1>
-            <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='main__icon'>
+        <section class="title-page__design">
+            <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
+            <h1 class="title-page__title">{{ home_page.title }}</h1>
+            <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
         </section>
         <section class="main__text-contain">
             <p class="main__text">{{ home_page.presentationText }}</p>
@@ -51,8 +51,8 @@
             <a class="opinions-section-link__link" href="{{ path('app_opinion_index')}}">Nos Avis</a>
         </section>
         {% if is_granted('ROLE_ADMIN') %}		
-            <div class="main">
-                <a class="buton" href="{{ path('app_home_page_edit', {'id': home_page.id }) }}">Modifier</a>
+            <div class="admin-home-page-edit">
+                <a class="admin-home-page-edit__button buton" href="{{ path('app_home_page_edit', {'id': home_page.id }) }}">Modifier</a>
             </div>
         {% endif %}
         {% endfor %}

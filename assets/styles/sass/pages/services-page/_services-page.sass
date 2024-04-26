@@ -2,32 +2,6 @@
 
 
 .services
-    +abstracts.d-flex (row, center, baseline) 
-    text-align: center
-    +abstracts.title(abstracts.$title-2, abstracts.$yellow)
-    margin-top: 2rem
-    text-decoration: underline
-    text-underline-offset: 0.5rem
-    text-decoration-color: #cfe202
-    +abstracts.responsive("big-phone")
-        +abstracts.title(abstracts.$title-1, abstracts.$yellow)
-        margin-top: 4rem
-
-    &__icon
-        @include abstracts.spin(5s)
-        margin: 2rem
-
-    &__text
-        +abstracts.text(abstracts.$text-3, abstracts.$yellow)
-        text-align: center
-        padding: 1.5rem
-        +abstracts.responsive("litle-tablet")
-            margin-top: 3rem
-            margin-left: auto
-            margin-right: auto
-            max-width: 80%
-            +abstracts.text(abstracts.$text-2, abstracts.$yellow)
-
 
     &__contain
         margin-top: 3rem

@@ -5,25 +5,6 @@
     width: 15rem    
 
 .main
-    +abstracts.d-flex (row, center, baseline) 
-    text-align: center
-    +abstracts.title(abstracts.$title-2, abstracts.$green)
-    margin-top: 2rem
-    text-decoration: underline
-    text-underline-offset: 0.5rem
-    text-decoration-color: #cfe202
-    +abstracts.responsive("big-phone")
-        +abstracts.title(abstracts.$title-1, abstracts.$green)
-        margin-top: 5rem
-
-
-    &__icon
-        display: none
-        @include abstracts.spin(5s)
-        +abstracts.responsive("big-phone")
-            display: block
-            margin: 3rem
-            height: 36px
 
     &__text
         text-align: center
@@ -109,3 +90,11 @@
             text-underline-offset: 0.5rem
             transform: translateY(-0.5rem)
             text-decoration-color: abstracts.$yellow
+
+.admin-home-page-edit
+    width: 100%
+    +abstracts.d-flex(row, center, center)
+    margin-top: 5rem
+
+    &__button
+        width: 20%

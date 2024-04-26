@@ -3,12 +3,12 @@
 {% block title %}Nos services{% endblock %}
 
 {% block body %}
-    <main>
+    <main class="services">
         {% for services_page in services_pages %}
-            <section class="services">
-                <img src="{{ asset('images/palmier.png')}}" alt="" class='services__icon'>
-                <h1 class="services">{{ services_page.title }}</h1>
-                <img src="{{ asset('images/palmier.png')}}" alt="" class='services__icon'>
+            <section class="title-page__design">
+                <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
+                <h1 class="title-page__title">{{ services_page.title }}</h1>
+                <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
             </section>
             <section>   
                 <h2 class="services__title">Voici Nos services entretien:</h2>
