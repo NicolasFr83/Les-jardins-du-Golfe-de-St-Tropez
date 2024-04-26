@@ -22,5 +22,8 @@
         {% endif %}
             <a class="topic-show__links--back-topics" href="{{ path('app_topics_index') }}">Retourner à la liste des sujets</a>
         </div>
+        <section class="openingSection">
+            {% include "opening/index.html.twig" %}
+        </section>
     </main>
 {% endblock %}

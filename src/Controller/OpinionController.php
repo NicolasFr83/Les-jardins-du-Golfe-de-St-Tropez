@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 #[Route('/opinions')]
 class OpinionController extends AbstractController
@@ -106,6 +107,10 @@ class OpinionController extends AbstractController
     #[Route('/{id}', name: 'app_opinion_delete', methods: ['POST'])]
     public function delete(Request $request, Opinion $opinion, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException('Accès refusé.');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$opinion->getId(), $request->request->get('_token'))) {
             $entityManager->remove($opinion);
             $entityManager->flush();

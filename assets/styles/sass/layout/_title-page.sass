@@ -1,0 +1,33 @@
+@use '../abstracts/_all' as abstracts
+    
+.title-page
+    +abstracts.d-flex (row, center, baseline) 
+    +abstracts.title(abstracts.$title-2, abstracts.$green)
+    margin-top: 2rem
+    +abstracts.responsive("big-phone")
+        +abstracts.title(abstracts.$title-1, abstracts.$green)
+        margin-top: 5rem
+
+    &__title
+        text-decoration: underline
+        text-underline-offset: 0.5rem
+        text-decoration-color: #cfe202
+        text-align: center
+
+    &__icon
+        display: none
+        @include abstracts.spin(5s)
+        +abstracts.responsive("big-phone")
+            display: block
+            margin: 3rem
+            height: 36px
+
+    &__text
+        text-align: center
+        +abstracts.text(abstracts.$text-3, abstracts.$yellow)
+        margin-top: 3rem
+        margin-left: auto
+        margin-right: auto
+        max-width: 80%
+        +abstracts.responsive("litle-tablet")
+            +abstracts.text(abstracts.$text-2, abstracts.$yellow)

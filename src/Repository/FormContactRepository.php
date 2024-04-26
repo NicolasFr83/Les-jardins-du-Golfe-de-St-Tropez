@@ -21,6 +21,15 @@ class FormContactRepository extends ServiceEntityRepository
         parent::__construct($registry, FormContact::class);
     }
 
+    public function save(FormContact $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     //    /**
     //     * @return FormContact[] Returns an array of FormContact objects
     //     */

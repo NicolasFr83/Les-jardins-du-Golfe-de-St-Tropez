@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\OpeningRepository;
 use App\Repository\OpinionRepository;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 #[Route('/')]
 class HomePageController extends AbstractController
@@ -38,6 +39,10 @@ class HomePageController extends AbstractController
     #[Route('/{id}/edit', name: 'app_home_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, HomePage $homePage, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException('Accès refusé.');
+        }
+
         $form = $this->createForm(HomePageType::class, $homePage);
         $form->handleRequest($request);
 

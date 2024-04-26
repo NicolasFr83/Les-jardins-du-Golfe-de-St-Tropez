@@ -11,8 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\OpeningRepository;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-#[Route('/services/page')]
+#[Route('/services')]
 class ServicesPageController extends AbstractController
 {
     #[Route('/', name: 'app_services_page_index', methods: ['GET'])]
@@ -37,6 +38,10 @@ class ServicesPageController extends AbstractController
     #[Route('/{id}/edit', name: 'app_services_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ServicesPage $servicesPage, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException('Accès refusé.');
+        }
+
         $form = $this->createForm(ServicesPageType::class, $servicesPage);
         $form->handleRequest($request);
 

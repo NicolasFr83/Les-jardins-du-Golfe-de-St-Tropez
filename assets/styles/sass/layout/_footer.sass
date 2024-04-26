@@ -1,7 +1,6 @@
 @use '../abstracts/_all' as abstracts
 
-
-.footer-custom
+.footer
     background-color: abstracts.$blackgreen
     @include abstracts.d-flex(column ,center, center)
 
@@ -15,6 +14,15 @@
         margin-bottom: 2%
         padding: 1%
 
+    &__text
+
+        &--link
+            color: abstracts.$yellow
+            margin-bottom: 2%
+            text-decoration: underline
+            text-underline-offset: 0.2rem
+            &:hover
+                color: abstracts.$dark
 
         &--copyright
             text-align: center

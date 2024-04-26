@@ -14,12 +14,13 @@ use App\Repository\OpeningRepository;
 use App\Repository\FormContactRepository;
 use App\Entity\FormContact;
 use App\Form\FormContactType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
-#[Route('/contact/page')]
+#[Route('/page-contact')]
 class ContactPageController extends AbstractController
 {
-    #[Route('/', name: 'app_contact_page_index', methods: ['GET'])]
+    #[Route('/', name: 'app_contact_page_index', methods: ['GET', 'POST'])]
     public function index(ContactPageRepository $contactPageRepository, Request $request, OpeningRepository $openingRepository, FormContactRepository $formContactRepository): Response
     {
         $formContact = new FormContact();
@@ -54,6 +55,10 @@ class ContactPageController extends AbstractController
     #[Route('/{id}/edit', name: 'app_contact_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ContactPage $contactPage, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException('Accès refusé.');
+        }
+
         $form = $this->createForm(ContactPageType::class, $contactPage);
         $form->handleRequest($request);
 

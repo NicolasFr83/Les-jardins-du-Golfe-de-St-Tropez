@@ -8,7 +8,7 @@
 
         {% if is_granted('ROLE_ADMIN') %}
             <div class='tips__modifications'>
-                <a href="{{ path('app_tips_new') }}" class='tips__modifications--new'>Ajouter un sujet</a>
+                <a href="{{ path('app_tips_new') }}" class='tips__modifications--new'>Ajouter un tuto</a>
             </div>
         {% endif %}
 
@@ -27,5 +27,8 @@
                 </li>
             {% endfor %}
         </ul>
+        <section class="openingSection">
+            {% include "opening/index.html.twig" %}
+        </section>
     </main>
 {% endblock %}

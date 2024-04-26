@@ -68,7 +68,7 @@ class FormContactType extends AbstractType
                     'class' => 'form-contact__field--input',
                 ]
             ])
-            ->add('subject',TextareaType::class, [
+            ->add('subject',TextType::class, [
                 'row_attr' => [
                     'class' => 'form-contact__field'
                 ],

@@ -5,11 +5,9 @@ namespace App\Controller;
 use App\Repository\OpeningRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 
 class OpeningController extends AbstractController
 {
-    #[Route('/opening', name: 'app_opening', methods: ['GET'])]
     public function index(OpeningRepository $openingRepository): Response
     {
         $openingHours = $openingRepository->findOneBy(['openingday' => 'Lundi']);
