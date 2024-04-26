@@ -1,11 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Opinion{% endblock %}
+{% block title %}Ajout d'un avis - Les Jardins du golfe{% endblock %}
 
 {% block body %}
-    <h1>Create new Opinion</h1>
-
-    {{ include('opinion/_form.html.twig') }}
-
-    <a href="{{ path('app_opinion_index') }}">back to list</a>
+    <main class="opinion-form">
+        <div class="opinion-form__design">
+            <h1 class="opinion-form__title">Rédigez votre avis</h1>
+            <section class="opinion-form__flux">
+            {{ form_start(form, {'attr': {'class': 'opinion-form__form'}}) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.avis) }}
+                {{ form_row(form.score) }}
+                <div class="opinion-form__button-div">
+                    <button class="opinion-form__button-div--button" type="submit" id="submitButton">Soumettre</button>
+                </div>
+            {{ form_end(form) }}
+            </div>
+        </div>
+        <a class="opinion-form__link-back-opinions" href="{{ path('app_opinion_index') }}">Retourner sur la page avis</a>
+        <section class="openingSection">
+            {% include "opening/index.html.twig" %}
+        </section>
+    </main>
 {% endblock %}

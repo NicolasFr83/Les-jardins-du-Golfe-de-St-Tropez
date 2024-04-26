@@ -11,12 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\OpeningRepository;
+use App\Repository\OpinionRepository;
 
 #[Route('/')]
 class HomePageController extends AbstractController
 {
     #[Route('/', name: 'app_home_page_index', methods: ['GET'])]
-    public function index(HomePageRepository $homePageRepository, OpeningRepository $openingRepository): Response
+    public function index(HomePageRepository $homePageRepository, OpeningRepository $openingRepository, OpinionRepository $opinionRepository): Response
     {
         $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
         $openingHourMorning = $openingHours->getOpeninghourmorning();

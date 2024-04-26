@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Opinion;
 use App\Form\OpinionType;
+use App\Repository\EnterpriseRepository;
+use App\Repository\OpeningRepository;
 use App\Repository\OpinionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,21 +13,55 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/opinion')]
+#[Route('/opinions')]
 class OpinionController extends AbstractController
 {
     #[Route('/', name: 'app_opinion_index', methods: ['GET'])]
-    public function index(OpinionRepository $opinionRepository): Response
+    public function index(OpinionRepository $opinionRepository, OpeningRepository $openingRepository): Response
     {
+        $moderatedOpinions = $opinionRepository->findBy(['isModerated' => true]);
+
+        $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
+        $openingHourMorning = $openingHours->getOpeninghourmorning();
+        $closingHourMorning = $openingHours->getClosinghourmorning();
+        $openingHourAfternoon = $openingHours->getOpeninghourafternoon();
+        $closingHourAfternoon = $openingHours->getClosinghourafternoon();
+        
         return $this->render('opinion/index.html.twig', [
-            'opinions' => $opinionRepository->findAll(),
+            'moderatedOpinions' => $moderatedOpinions,
+            'opening' => $openingRepository->findAll(),
+            'openingHourMorning' => $openingHourMorning,
+            'closingHourMorning' => $closingHourMorning,
+            'openingHourAfternoon' => $openingHourAfternoon,
+            'closingHourAfternoon' => $closingHourAfternoon,
         ]);
     }
 
     #[Route('/new', name: 'app_opinion_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        EnterpriseRepository $enterpriseRepository,
+        OpeningRepository $openingRepository
+    ): Response
     {
         $opinion = new Opinion();
+
+        $enterpriseName = 'Les jardins du Golfe de St Tropez';
+        $enterprise = $enterpriseRepository->findOneBy(['name' => $enterpriseName]);
+
+        if ($enterprise) {
+            $opinion->setEnterprise($enterprise);
+        }
+
+        $opinion->setIsModerated(false);
+
+        $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
+        $openingHourMorning = $openingHours->getOpeninghourmorning();
+        $closingHourMorning = $openingHours->getClosinghourmorning();
+        $openingHourAfternoon = $openingHours->getOpeninghourafternoon();
+        $closingHourAfternoon = $openingHours->getClosinghourafternoon();
+
         $form = $this->createForm(OpinionType::class, $opinion);
         $form->handleRequest($request);
 
@@ -33,38 +69,37 @@ class OpinionController extends AbstractController
             $entityManager->persist($opinion);
             $entityManager->flush();
 
+            $this->addFlash('messageOpinionSent', 'Votre avis a bien été envoyé.');
             return $this->redirectToRoute('app_opinion_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('opinion/new.html.twig', [
             'opinion' => $opinion,
             'form' => $form,
+            'opening' => $openingRepository->findAll(),
+            'openingHourMorning' => $openingHourMorning,
+            'closingHourMorning' => $closingHourMorning,
+            'openingHourAfternoon' => $openingHourAfternoon,
+            'closingHourAfternoon' => $closingHourAfternoon,
         ]);
     }
 
     #[Route('/{id}', name: 'app_opinion_show', methods: ['GET'])]
-    public function show(Opinion $opinion): Response
+    public function show(Opinion $opinion, OpeningRepository $openingRepository): Response
     {
+        $openingHours = $openingRepository->findOneBy(['openingDay' => 'Lundi']);
+        $openingHourMorning = $openingHours->getOpeninghourmorning();
+        $closingHourMorning = $openingHours->getClosinghourmorning();
+        $openingHourAfternoon = $openingHours->getOpeninghourafternoon();
+        $closingHourAfternoon = $openingHours->getClosinghourafternoon();
+
         return $this->render('opinion/show.html.twig', [
             'opinion' => $opinion,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_opinion_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Opinion $opinion, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(OpinionType::class, $opinion);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_opinion_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('opinion/edit.html.twig', [
-            'opinion' => $opinion,
-            'form' => $form,
+            'opening' => $openingRepository->findAll(),
+            'openingHourMorning' => $openingHourMorning,
+            'closingHourMorning' => $closingHourMorning,
+            'openingHourAfternoon' => $openingHourAfternoon,
+            'closingHourAfternoon' => $closingHourAfternoon,
         ]);
     }
 

@@ -1,0 +1,27 @@
+@use "../../abstracts/_all" as abstracts
+
+.opinions
+    +abstracts.d-flex(column, center, center)
+    margin-top: 5vh
+
+    &__title
+        text-align: center
+        color: green
+
+    &__modifications
+        +abstracts.d-flex(center, center, center)
+        margin-top: 5vh
+
+        &--new
+            text-align: center
+            text-decoration: underline
+            text-underline-offset: 0.3rem
+            color: green
+            &:hover
+                text-decoration-color: yellow
+
+    &__list
+        +abstracts.d-flex(column, center, center)
+        margin-top: 5vh
+        margin-bottom: 10vh
+        padding-left: 0

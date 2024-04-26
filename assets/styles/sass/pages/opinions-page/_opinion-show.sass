@@ -1,0 +1,50 @@
+@use '../../abstracts/_all' as abstracts
+
+.opinion-show
+    +abstracts.d-flex(column, center, center)
+    margin-top: 5vh
+    margin-bottom: 15vh
+
+    &__design
+        +abstracts.d-flex(column, center, center)
+        width: 90%
+        +abstracts.d-flex(column, center, center)
+        +abstracts.responsive('litle-tablet')
+            width: 80%
+        +abstracts.responsive('laptop')
+            width: 70%
+        
+    &__title
+        width: 100%
+        background-color: #004000
+        color: yellow
+        padding: 0.5rem
+        text-align: center
+        margin-top: 5vh
+
+    &__contain
+        margin-top: 5vh
+        
+        &--text
+            text-align: justify
+            margin-top: 2vh
+
+    &__links
+        +abstracts.d-flex(column, center, center)
+        margin-bottom: 10vh
+
+        &--delete
+            text-decoration: underline
+            text-underline-offset: 0.3rem
+            color: green
+            margin-top: 10vh
+            &:hover
+                color: red
+
+        &--back-opinions
+            text-decoration: underline
+            text-underline-offset: 0.3rem
+            color: green
+            margin-top: 5vh
+            &:hover
+                text-decoration-color: yellow

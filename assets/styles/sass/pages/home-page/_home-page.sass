@@ -80,8 +80,29 @@
         text-underline-offset: 0.5rem
         text-decoration-color: abstracts.$green
         text-transform: uppercase
+        &:hover
+            color: abstracts.$green
+            text-decoration: underline
+            text-underline-offset: 0.5rem
+            transform: translateY(-0.5rem)
+            text-decoration-color: abstracts.$yellow
 
+.opinions-section-link
+    +abstracts.d-flex(column, center, center)
+    margin-top: 15vh
 
+    &__title
+        text-align: center
+        +abstracts.title(abstracts.$title-2, abstracts.$green)
+
+    &__link
+        +abstracts.title(abstracts.$title-3, abstracts.$yellow)
+        text-align: center
+        margin-top: 1rem
+        text-decoration: underline
+        text-underline-offset: 0.5rem
+        text-decoration-color: abstracts.$green
+        text-transform: uppercase
         &:hover
             color: abstracts.$green
             text-decoration: underline

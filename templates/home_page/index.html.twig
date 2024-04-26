@@ -42,6 +42,10 @@
         </div>
         <a  class="caroussel__link" href="{{ path('app_topics_index')}}">Aller vers notre pépinière</a>
     </section>
+    <section class="opinions-section-link">
+        <h2 class="opinions-section-link__title">Retrouver tous nos avis sur notre page dédiée</h2> 
+        <a class="opinions-section-link__link" href="{{ path('app_opinion_index')}}">Nos Avis</a>
+    </section>
     {% if is_granted('ROLE_ADMIN') %}		
         <div class="main">
             <a class="buton" href="{{ path('app_home_page_edit', {'id': home_page.id }) }}">Modifier</a>
@@ -51,5 +55,4 @@
 	<section class="openingSection">
         {% include "opening/index.html.twig" %}
     </section>
-
 {% endblock %}
