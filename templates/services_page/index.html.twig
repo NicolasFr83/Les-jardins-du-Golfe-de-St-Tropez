@@ -6,9 +6,9 @@
     <main class="services">
         {% for services_page in services_pages %}
             <section class="title-page__design">
-                <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
+                <img src="{{ asset('build/images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
                 <h1 class="title-page__title">{{ services_page.title }}</h1>
-                <img src="{{ asset('images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
+                <img src="{{ asset('build/images/palmier.png')}}" alt="Palmier qui tourne" class='title-page__icon'>
             </section>
             <section>   
                 <h2 class="services__title">Voici Nos services entretien:</h2>
@@ -16,9 +16,9 @@
                     <p class="services__text">{{ services_page.servicesPresentation }}</p>
                 </div>
                 <div class='contain'> 
-                    <img class='contain__images'src="{{ asset('images/photo-villa.jpg')}}" alt="photo de jardin">
-                    <img class='contain__images'src="{{ asset('images/photo-villa-2.jpg')}}" alt="photo de jardin">
-                    <img class='contain__images'src="{{ asset('images/garden-2040714_640.jpg')}}" alt="photo de jardin">
+                    <img class='contain__images'src="{{ asset('build/images/photo-villa.jpg')}}" alt="photo de jardin">
+                    <img class='contain__images'src="{{ asset('build/images/photo-villa-2.jpg')}}" alt="photo de jardin">
+                    <img class='contain__images'src="{{ asset('build/images/garden-2040714_640.jpg')}}" alt="photo de jardin">
                 </div>
             </section> 
             <section>
@@ -27,9 +27,9 @@
                     <p class="services__text">{{ services_page.creationPresentationText }}</p>
                 </div>
                 <div class="contain">
-                    <img class="contain__images" src="{{ asset('images/construction-site-.jpg')}}" alt="photo création">
-                    <img class="contain__images" src="{{ asset('images/construction-work-.jpg')}}" alt="photo création">
-                    <img class="contain__images" src="{{ asset('images/people-.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('build/images/construction-site-.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('build/images/construction-work-.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('build/images/people-.jpg')}}" alt="photo création">
                 </div>
             </section>
                 <h2 class="services__title">Nos services spécialisés:</h2>
@@ -37,9 +37,9 @@
                     <p class="services__text">{{ services_page.specialServicesText }}</p>
                 </div>
                 <div class="contain">
-                    <img class="contain__images" src="{{ asset('images/swimming-pool.jpg')}}" alt="photo création">
-                    <img class="contain__images" src="{{ asset('images/pexels.jpg')}}" alt="photo création">
-                    <img class="contain__images" src="{{ asset('images/wash-concrete.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('build/images/swimming-pool.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('build/images/pexels.jpg')}}" alt="photo création">
+                    <img class="contain__images" src="{{ asset('build/images/wash-concrete.jpg')}}" alt="photo création">
                 </div>
             </section>
             {% if is_granted('ROLE_ADMIN') %}		
