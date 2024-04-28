@@ -12366,6 +12366,18 @@ textarea.form-control-lg {
   }
 }
 
+.admin-services-page-edit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+.admin-services-page-edit__button {
+  width: 20%;
+}
+
 .services-page-form {
   display: flex;
   flex-direction: column;
