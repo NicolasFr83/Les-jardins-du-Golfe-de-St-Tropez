@@ -12035,12 +12035,7 @@ textarea.form-control-lg {
 .caroussel__images {
   display: flex;
   justify-content: beetwen;
-  width: 75%;
-}
-@media screen and (min-width: 768px) {
-  .caroussel__images {
-    width: 100%;
-  }
+  width: 100%;
 }
 .caroussel__title {
   text-align: center;
@@ -12072,6 +12067,38 @@ textarea.form-control-lg {
   text-transform: uppercase;
 }
 .caroussel__link:hover {
+  color: #00DD00;
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  transform: translateY(-0.5rem);
+  text-decoration-color: #e7c800;
+}
+
+.tutos-section-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+}
+.tutos-section-link__title {
+  text-align: center;
+  font-family: "Cormorant", serif;
+  font-size: 2rem;
+  color: #00DD00;
+}
+.tutos-section-link__link {
+  font-family: "Cormorant", serif;
+  font-size: 1.5rem;
+  color: #e7c800;
+  text-align: center;
+  margin-top: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  text-decoration-color: #00DD00;
+  text-transform: uppercase;
+}
+.tutos-section-link__link:hover {
   color: #00DD00;
   text-decoration: underline;
   text-underline-offset: 0.5rem;
@@ -12277,6 +12304,23 @@ textarea.form-control-lg {
     text-decoration: underline;
     text-underline-offset: 0.5rem;
     text-decoration-color: #cfe202;
+    font-family: "Life Savers", serif;
+    font-size: 2rem;
+    color: #e7c800;
+  }
+}
+.services__text {
+  text-align: center;
+  font-family: "Life Savers", serif;
+  font-size: 1.5rem;
+  color: #e7c800;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+}
+@media screen and (min-width: 768px) {
+  .services__text {
     font-family: "Life Savers", serif;
     font-size: 2rem;
     color: #e7c800;
@@ -12838,6 +12882,7 @@ textarea.form-control-lg {
   align-items: center;
   margin-top: 5vh;
   margin-bottom: 20vh;
+  padding-left: 0;
 }
 
 .tip {
@@ -13253,6 +13298,7 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   margin-bottom: 20vh;
+  padding-left: 0;
 }
 
 .topic {
@@ -13629,6 +13675,7 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   margin: 3rem;
+  padding-left: 0;
 }
 @media screen and (min-width: 855px) {
   .paging__list {
@@ -14229,6 +14276,9 @@ textarea.form-control-lg {
   margin-bottom: 2%;
   padding: 1%;
 }
+.footer__infos--copyright {
+  text-align: center;
+}
 .footer__text--link {
   color: #e7c800;
   margin-bottom: 2%;
@@ -14237,9 +14287,6 @@ textarea.form-control-lg {
 }
 .footer__text--link:hover {
   color: #000000;
-}
-.footer__text--copyright {
-  text-align: center;
 }
 
 .openingSection {
