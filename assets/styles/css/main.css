@@ -12037,6 +12037,9 @@ textarea.form-control-lg {
   justify-content: beetwen;
   width: 100%;
 }
+.caroussel__images--image {
+  width: 100%;
+}
 .caroussel__title {
   text-align: center;
   font-family: "Cormorant", serif;
@@ -12086,6 +12089,8 @@ textarea.form-control-lg {
   font-family: "Cormorant", serif;
   font-size: 2rem;
   color: #00DD00;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 .tutos-section-link__link {
   font-family: "Cormorant", serif;
@@ -14405,6 +14410,50 @@ textarea.form-control-lg {
     font-size: 2rem;
     color: #e7c800;
   }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 1px 1px 47px -3px #000000;
+  border-radius: 1rem 1rem 1rem 1rem;
+  outline: solid 0.3rem;
+  outline-color: #e7c800;
+  color: #038b16;
+  padding: 1rem;
+}
+.error__title {
+  font-family: "Cormorant", serif;
+  font-size: 1.5rem;
+  color: #e7c800;
+  margin-bottom: 1rem;
+  margin: 1rem;
+  text-align: center;
+  color: #038b16;
+}
+.error__info {
+  font-family: "Life Savers", serif;
+  font-size: 1.5rem;
+  color: #00DD00;
+  margin-bottom: 1rem;
+  margin: 1rem;
+  text-align: center;
+}
+.error__link {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: "Life Savers", serif;
+  font-size: 1.5rem;
+  color: #000000;
 }
 
 .buton {
