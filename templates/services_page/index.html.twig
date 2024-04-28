@@ -43,8 +43,8 @@
                 </div>
             </section>
             {% if is_granted('ROLE_ADMIN') %}		
-            <div class="services">
-                <a class="buton" href="{{ path('app_services_page_edit', {'id': services_page.id}) }}">Modifier</a>
+            <div class="admin-services-page-edit">
+                <a class="buton admin-services-page-edit__button" href="{{ path('app_services_page_edit', {'id': services_page.id}) }}">Modifier</a>
             </div>
             {% endif %}
         {% endfor %}

@@ -1,7 +1,7 @@
 @use '../../abstracts/_all' as abstracts
 
 .services
-
+    
     &__contain
         margin-top: 3rem
         background: abstracts.$darkgreen
@@ -56,3 +56,10 @@
                 width: 300px
                 transform: scale(1.9) 
 
+.admin-services-page-edit
+    width: 100%
+    +abstracts.d-flex(row, center, center)
+    margin-top: 5rem
+
+    &__button
+        width: 20%
