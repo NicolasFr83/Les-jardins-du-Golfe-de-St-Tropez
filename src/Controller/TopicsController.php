@@ -38,6 +38,13 @@ class TopicsController extends AbstractController
 
         $topics = $topicsRepository->getPaginatedAllTopics($page, $limit, $filtersCategories, $filtersExposures);
 
+        foreach ($topics as $topic) {
+            $description = $topic->getDescription();
+            if (strlen($description) > 300) {
+                $topic->setDescription(substr($description, 0, 300) . '...');
+            }
+        }
+
         $total = $topicsRepository->countAllTopics($filtersCategories, $filtersExposures);
 
         $categories = $categoryRepository->findAll();
