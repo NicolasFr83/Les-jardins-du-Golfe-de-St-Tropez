@@ -40,11 +40,11 @@ public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')
-            ->hideOnForm(),
+                ->hideOnForm(),
             TextField::new('title', 'Titre'),
-            TextAreaField::new('ServicesPresentation', 'Présentation des services entretien'),
-            TextAreaField::new('creationPresentationText', 'Présentation des services création'),
-            TextAreaField::new('specialServicesText', 'Présentation des services spécialisés'),
+            TextareaField::new('servicesPresentation', 'Présentation des services entretien'),
+            TextareaField::new('creationPresentationText', 'Présentation des services création'),
+            TextareaField::new('specialServicesText', 'Présentation des services spécialisés'),
         ];
     }
 }
