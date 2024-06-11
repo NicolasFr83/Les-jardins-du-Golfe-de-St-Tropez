@@ -27,7 +27,6 @@ class RegistrationController extends AbstractController
         UserAuthenticatorInterface $userAuthenticator,
         AppCustomAuthenticator $authenticator,
         EntityManagerInterface $entityManager,
-        UserRepository $userRepository,
         OpeningRepository $openingRepository,
         MailerInterface $mailer
     ): Response
