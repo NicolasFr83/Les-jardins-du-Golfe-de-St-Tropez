@@ -1,13 +1,12 @@
-
-<div class="openingSection__days">
+<section class="openingSection__days">
     <img src="{{ asset('build/images/Logo-enterprise.png')}}" alt="logo-entreprise" class="openingSection__logo" >
     <div class="openingSection__open">
         <a  href="tel:+330000000000" class="openingSection__phone">Téléphone : 04 98 33 00 00</a>
         <p class="openingSection__text">Ouverture : </p>
-        <ul>
+        <ul class="openingSection__list">
             {% for opening in opening %}
                 <li>{{ opening.openingDay }} : {{ openingHourMorning }} - {{ closingHourMorning }} {{ openingHourAfternoon }} - {{ closingHourAfternoon }}</li>
             {% endfor %}
         </ul>
     </div>
-</div>
+</section>

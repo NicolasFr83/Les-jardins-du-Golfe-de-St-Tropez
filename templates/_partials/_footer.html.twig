@@ -1,8 +1,17 @@
 <footer class="footer">
     <section class=" footer__infos">
         <a class="footer__text--link" href="{{ path('app_opinion_index')}}" class="link-hover mt-2">Avis</a>
-        <p class="footer__text">Informations légales</h5>
-        <p class="footer__text">Politique de confidentialités.</p>
+        <ul class="footer__legals">
+            <li>
+                <a class="footer__legals--links" href="{{path('app_legal_notice')}}">Mentions légales</a>
+            </li>
+            <li>
+                <a class="footer__legals--links" href="{{path('app_privacy_policy')}}">Politque de confidentialité</a>
+            </li>
+            <li>
+                <a class="footer__legals--links" href="{{path('app_terms_of_use')}}">Conditions générales d'utilisation</a>
+            </li>
+        </ul>
         <p class="footer__infos--copyright">© Copyright 2024. Tous droits réservés Les Jardins du Golfe de St Tropez.</p>
     </section>
 </footer>

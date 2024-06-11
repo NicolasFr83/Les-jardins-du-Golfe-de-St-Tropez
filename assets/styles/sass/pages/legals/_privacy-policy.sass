@@ -1,0 +1,16 @@
+@use '../../abstracts/_all' as abstracts
+
+.privacy-policy
+    margin-top: 5rem
+
+    &__main-title
+        +abstracts.title(abstracts.$text-1, abstracts.$yellow)
+        text-align: center
+
+    &__section
+        margin: 4rem 0
+
+        &--title
+            +abstracts.title(abstracts.$title-2, abstracts.$yellow)
+            text-align: center
+            margin-bottom: 2.5rem

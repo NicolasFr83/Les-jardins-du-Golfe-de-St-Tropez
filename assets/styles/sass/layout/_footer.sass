@@ -21,6 +21,19 @@
 
         &--link
             color: abstracts.$yellow
+            text-decoration: underline
+            text-underline-offset: 0.2rem
+            &:hover
+                color: abstracts.$dark
+
+    &__legals
+        margin-top: 2vw
+        margin-bottom: 2vw
+        +abstracts.d-flex(column, center, center)
+        padding-left: 0
+        
+        &--links
+            color: abstracts.$yellow
             margin-bottom: 2%
             text-decoration: underline
             text-underline-offset: 0.2rem

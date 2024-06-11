@@ -14269,6 +14269,96 @@ textarea.form-control-lg {
   text-decoration-color: yellow;
 }
 
+.legal-notice {
+  margin-top: 5rem;
+}
+.legal-notice__main-title {
+  font-family: "Cormorant", serif;
+  font-size: 3rem;
+  color: #e7c800;
+  text-align: center;
+}
+.legal-notice__section {
+  margin: 4rem 0;
+}
+.legal-notice__section--title {
+  font-family: "Cormorant", serif;
+  font-size: 2rem;
+  color: #e7c800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.legal-notice-paragraph {
+  margin-bottom: 1.8rem;
+}
+.legal-notice-paragraph__title {
+  font-family: "Cormorant", serif;
+  font-size: 1.5rem;
+  color: #e7c800;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.privacy-policy {
+  margin-top: 5rem;
+}
+.privacy-policy__main-title {
+  font-family: "Cormorant", serif;
+  font-size: 3rem;
+  color: #e7c800;
+  text-align: center;
+}
+.privacy-policy__section {
+  margin: 4rem 0;
+}
+.privacy-policy__section--title {
+  font-family: "Cormorant", serif;
+  font-size: 2rem;
+  color: #e7c800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.terms-of-use {
+  margin-top: 5rem;
+}
+.terms-of-use__main-title {
+  font-family: "Cormorant", serif;
+  font-size: 3rem;
+  color: #e7c800;
+  text-align: center;
+  margin: 2rem;
+}
+.terms-of-use__section {
+  margin: 4rem 0;
+}
+.terms-of-use__section--title {
+  font-family: "Cormorant", serif;
+  font-size: 2rem;
+  color: #e7c800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.terms-of-use-paragraph {
+  margin-bottom: 1.8rem;
+}
+.terms-of-use-paragraph__title {
+  font-family: "Cormorant", serif;
+  font-size: 1.5rem;
+  color: #e7c800;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+.terms-of-use-paragraph__subtitle {
+  font-family: "Cormorant", serif;
+  font-size: 1.5rem;
+  color: #e7c800;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
 .head {
   background-color: rgb(8, 47, 13);
 }
@@ -14298,11 +14388,28 @@ textarea.form-control-lg {
 }
 .footer__text--link {
   color: #e7c800;
-  margin-bottom: 2%;
   text-decoration: underline;
   text-underline-offset: 0.2rem;
 }
 .footer__text--link:hover {
+  color: #000000;
+}
+.footer__legals {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+}
+.footer__legals--links {
+  color: #e7c800;
+  margin-bottom: 2%;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+.footer__legals--links:hover {
   color: #000000;
 }
 
@@ -14363,6 +14470,9 @@ textarea.form-control-lg {
   font-size: 1rem;
   color: #e7c800;
   font-weight: bold;
+}
+.openingSection__list {
+  padding-left: 0;
 }
 
 .title-page {

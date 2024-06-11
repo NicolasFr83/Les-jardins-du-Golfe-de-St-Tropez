@@ -1,0 +1,30 @@
+@use '../../abstracts/_all' as abstracts
+
+.terms-of-use
+    margin-top: 5rem
+
+    &__main-title
+        +abstracts.title(abstracts.$title-1, abstracts.$yellow)
+        text-align: center
+        margin: 2rem
+
+    &__section
+        margin: 4rem 0
+
+        &--title
+            +abstracts.title(abstracts.$title-2, abstracts.$yellow)
+            text-align: center
+            margin-bottom: 2.5rem
+
+.terms-of-use-paragraph
+    margin-bottom: 1.8rem
+
+    &__title
+        +abstracts.title(abstracts.$title-3, abstracts.$yellow)
+        margin-bottom: 0.5rem
+        margin-top: 2rem
+
+    &__subtitle
+        +abstracts.title(abstracts.$text-3, abstracts.$yellow)
+        margin-bottom: 0.5rem
+        margin-top: 2rem
